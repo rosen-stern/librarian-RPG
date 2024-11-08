@@ -12,7 +12,7 @@
 <tw-storydata name="A Library Game" startnode="1" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="D78784E3-75AD-4DBB-9B09-B374B78A8C4D" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Welcome To Libraryfield" tags="" position="600,200" size="100,100">
 EXAMPLE SCENARIO:
 
-Welcome to the Public Library at Libraryfield! Libraryfield is in a bit of a pickle right now. Currently, our ability to support the diverse needs of our community is challenged by severe limitations across all of our digital resources. We should be on the bleeding edge of media collecting as a public institution, but our library feels like it has barely stepped out of 2010!
+Welcome to the Public Library at Libraryfield! Libraryfield is in a bit of a pickle right now as we have (display: &quot;timeDance&quot;) to make this happen. Currently, our ability to support the diverse needs of our community is challenged by severe limitations across all of our digital resources. We should be on the bleeding edge of media collecting as a public institution, but our library feels like it has barely stepped out of 2010!
 
 Luckily for us, a Mysterious Benefactor has given us a Hefty Grant, (you could even call it a blank check?) to prove to them that our Library can handle all sorts of modern media formats and that we will become the hub that Libraryfield deserves!  
 (link: &quot;Click to continue&quot;)[==
@@ -131,26 +131,24 @@ _________
 ==|
 ($makeItem: (random: 1,$gen_items&#39;s length))
 |==|
---&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $gen_events to 
+--&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
 	(a:
 		(dm:&quot;title&quot;,&quot;test event&#39;s name&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
     		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;effect&quot;,&quot;player&#39;s health -= 2&quot;,
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;unlocked&quot;,true
 		),
 		(dm:&quot;title&quot;,&quot;test event 2&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
     		&quot;description&quot;,&quot;this is a second test event&quot;,
             &quot;effect&quot;,&quot;player&#39;s health -= 4&quot;,
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;unlocked&quot;,true
-		)
-	)
-)
-
-(set: $vr_events to 
-	(a:
+		),
 		(dm:&quot;title&quot;,&quot;test vr event&quot;,
+        	&quot;type&quot;,&quot;vr&quot;,
     		&quot;description&quot;,&quot;this is a vr test event&quot;,
             &quot;effect&quot;,&quot;player&#39;s vr -= 4&quot;,
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -159,18 +157,18 @@ _________
 	)
 )
 
-(set: $makeEvent to (macro: num-type _event, [
+(set: $displayEvent to (macro: num-type _event, [
     (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
-    ##(print:$gen_events&#39;s _event&#39;s title)
+    ##(print:$events&#39;s _event&#39;s title)
     |==
-    &#39;&#39;Effect&#39;&#39;: (print:$gen_events&#39;s _event&#39;s effect)
-    &#39;&#39;Citation&#39;&#39;: (print:$gen_events&#39;s _event&#39;s citation)
+    &#39;&#39;Effect&#39;&#39;: (print:$events&#39;s _event&#39;s effect)
+    &#39;&#39;Citation&#39;&#39;: (print:$events&#39;s _event&#39;s citation)
     ==|
-    //(print:$gen_events&#39;s _event&#39;s description)//
+    //(print:$events&#39;s _event&#39;s description)//
     ]
 ]))
 
-&lt;!--EXAMPLE: ($makeEvent: (random: 1,$gen_events&#39;s length))--&gt;}</tw-passagedata><tw-passagedata pid="7" name="Collections" tags="startup" position="300,475" size="100,100">{(set: $collections to 
+&lt;!--EXAMPLE: ($displayEvent: (random: 1,$events&#39;s length))--&gt;}</tw-passagedata><tw-passagedata pid="7" name="Collections" tags="startup" position="300,475" size="100,100">{(set: $collections to 
 	(a:
     	(dm:&quot;type&quot;,&quot;streaming&quot;,
         &quot;amount&quot;,2,
@@ -185,6 +183,20 @@ _________
         &quot;status&quot;,&quot;Young&quot;,
         &quot;startingItems&quot;,(a:&quot;Cutting Edge&quot;,&quot;Technical&quot;),
         &quot;unlocked&quot;,true
+        ),
+        (dm:&quot;type&quot;,&quot;Videogames&quot;,
+        &quot;amount&quot;,2,
+        &quot;token&quot;,&quot;V&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Fun&quot;,&quot;Frivolous&quot;),
+        &quot;unlocked&quot;,true
+        ),
+        (dm:&quot;type&quot;,&quot;Magazines&quot;,
+        &quot;amount&quot;,2,
+        &quot;token&quot;,&quot;V&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Chill Licenses&quot;,&quot;Easy&quot;),
+        &quot;unlocked&quot;,false
         )
 	)
 )
@@ -200,7 +212,9 @@ _________
     ]
 ]))}</tw-passagedata><tw-passagedata pid="8" name="Untitled Passage" tags="" position="600,0" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
 
-Stardew Valley for Libraries</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="150,100" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">What kind of media would you like to start your library with?
+Stardew Valley for Libraries
+
+As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="150,100" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">What kind of media would you like to start your library with?
 
 (set: $unlockedCollections to (a:&quot;--choose one--&quot;))(set: $CurrentCollectionChoice to &quot;--choose one--&quot;)(set: $LastCollectionChoice to &quot;--choose one--&quot;)(for:each _coll where _coll&#39;s unlocked is true, ...$collections)[(set: $unlockedCollections to it + (a:_coll&#39;s type))]
 
@@ -214,21 +228,12 @@ Stardew Valley for Libraries</tw-passagedata><tw-passagedata pid="9" name="Note 
 
 [[Confirm Choice-&gt;Starting Sequence]]</tw-passagedata><tw-passagedata pid="11" name="Starting Sequence" tags="" position="600,475" size="100,100">{(set: $playerCollection to (a:1st of (find: _coll where _coll&#39;s type is $LastCollectionChoice,
     ...$collections)))
-
+(set: $unlockedCollections to it - (a:$LastCollectionChoice))
 (set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &quot;general&quot;, ...$items)+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
 }
 
 [[Round One]]
-
-All available items:
-(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
-{
-(set: $playerUsedItems to (a:))
-(set: $playerUsedItems to it + ($addItem: &quot;test item 2&quot;))
-(set: $playerUsedItems to it + ($addItem: &quot;test item&#39;s name&quot;))
-}
-Your current items:
-(print: $playerUsedItems)</tw-passagedata><tw-passagedata pid="12" name="Untitled Passage 1" tags="" position="825,325" size="100,100">(print:&quot;$&quot;+&quot;streaming&quot;+&quot;_items&quot;)</tw-passagedata><tw-passagedata pid="13" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
+</tw-passagedata><tw-passagedata pid="12" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
 	(a:
         (dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
             &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
@@ -246,6 +251,22 @@ Your current items:
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
 		),
+        (dm:&quot;name&quot;,&quot;test item 3&quot;,
+            &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
+            &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+        ),
+        (dm:&quot;name&quot;,&quot;test item 4&quot;,
+            &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
+            &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+        ),
         (dm:&quot;name&quot;,&quot;test item streaming&quot;,
             &quot;description&quot;,&quot;this is a stream-only test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s stream += 2&quot;,
@@ -280,19 +301,93 @@ Your current items:
     //(print:$items&#39;s  _item&#39;s citation)//
     ]
 ]))
+(set: $printItemFromName to (macro: str-type _itemname, [
+	(find: _item where _item&#39;s name contains _itemname, ... $items)
+    (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:$items&#39;s _item&#39;s name)
+    |=
+    &#39;&#39;Effect&#39;&#39;: (print:$items&#39;s _item&#39;s effect)
+    &#39;&#39;Quote&#39;&#39;: (print:$items&#39;s _item&#39;s quote)
+    &#39;&#39;Description&#39;&#39;: (print:$items&#39;s _item&#39;s description)
+    =|
+    //(print:$items&#39;s  _item&#39;s citation)//
+    ]
+]))
 &lt;!--
 EXAMPLE:
 |==
 ($printItem: (random: 1,$items&#39;s length))
 ==|
-($printItem: (random: 1,$items&#39;s length))
+($printItemFromName: &quot;test item streaming&quot;)
+==|
+($printItemFromName: &quot;test item streaming&quot;)
 |==|
 --&gt;
 }
-</tw-passagedata><tw-passagedata pid="14" name="Round One" tags="" position="600,600" size="100,100">(set: $itemOptions to (a:))
-(move: $playerAvailableItems&#39;s random to $itemOptions)
-(move: $playerAvailableItems&#39;s random to $itemOptions)
-(dropdown: 2bind $chooseItems1, )</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="13" name="Round One" tags="" position="600,600" size="100,100">(set: $itemOptions to (a:))
+Make your choice:
+|=
+{(for: each _i, ...(range:1,$NumberOfChoices))[
+	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
+    (link-repeat: $itemOptions&#39;s _i&#39;s name)[
+    	(set: $choice to _i)
+        (show: ?choice)
+        (hide: ?collectionChoice)
+	]
+    =|=
+]}
+{(if: $unlockedCollections&#39;s length &gt; 1)[
+	(link-repeat: &quot;Add a new Collection&quot;)[
+    	(set: $choice to &quot;New Collection&quot;)(hide: ?choice)(show: ?collectionChoice)
+	]
+]}
+=|
+|choice)[(live:0.2s)[(a:$itemOptions&#39;s $choice)]]
+|collectionChoice)[[Add a new collection to your library?
+
+(dropdown: 2bind $LastCollectionChoice, ...$unlockedCollections)
+]]
+|==|
+{(link-reveal-goto: &quot;Event One&quot;)[
+	(if: $choice is not &quot;New Collection&quot;)[
+    	(move: $itemOptions&#39;s $choice into $playerItems)(set: $playerAvailableItems to it + $itemOptions)
+	](else:)[
+    	(set: $unlockedCollections to it - (a:$LastCollectionChoice))
+    	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is
+        true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
+        (set: $playerAvailableItems to it + $itemOptions)
+    ]
+]}
+
+
+________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+
+Your current items:
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Event One" tags="" position="475,725" size="100,100">________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+
+Your current items:
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="15" name="timeDance" tags="" position="100,625" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="16" name="good test code" tags="" position="75,475" size="100,100">________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+{
+(set: $playerItems to (a:))
+(set: $playerItems to it + ($addItem: &quot;test item 2&quot;))
+(set: $playerItems to it + ($addItem: &quot;test item&#39;s name&quot;))
+}
+
+Your current items:
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">(set: $NumberOfChoices to 2)
+(set: $playerItems to (a:))</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
