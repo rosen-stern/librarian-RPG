@@ -9,7 +9,32 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play A Library Game.</tw-noscript></noscript></tw-story>
-<tw-storydata name="A Library Game" startnode="1" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="D78784E3-75AD-4DBB-9B09-B374B78A8C4D" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Welcome To Libraryfield" tags="" position="600,200" size="100,100">
+<tw-storydata name="A Library Game" startnode="1" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="D78784E3-75AD-4DBB-9B09-B374B78A8C4D" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --main-bg-color: brown;
+  --red: #913B35;
+  --yellow: #EED17F;
+   --white: #FFFFFF;
+  
+  /* FONTS */
+  --sans-serif-font:"Poppins", sans-serif;
+  --serif-font:"EB Garamond", serif;
+}
+
+
+
+tw-story {
+background-color: var(--white);
+  color: black;
+  font-family: var(--sans-serif-font);
+}
+
+tw-link{
+background-color: var(--red);
+  padding: 20px;
+  color: var(--white);
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Welcome To Libraryfield" tags="" position="600,200" size="100,100">
 EXAMPLE SCENARIO:
 
 Welcome to the Public Library at Libraryfield! Libraryfield is in a bit of a pickle right now as we have (display: &quot;timeDance&quot;) to make this happen. Currently, our ability to support the diverse needs of our community is challenged by severe limitations across all of our digital resources. We should be on the bleeding edge of media collecting as a public institution, but our library feels like it has barely stepped out of 2010!
