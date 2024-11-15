@@ -53,7 +53,7 @@ display: flex;
   display: flex;
   flex-flow: column;  
   
-    & > tw-expression {
+    & > tw-hook {
 		background-color: var(--red);
         padding: 20px;
         display:inline-block;
@@ -318,8 +318,8 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
 </tw-passagedata><tw-passagedata pid="12" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
 	(a:
         (dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
-            &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
-            &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
+            &quot;description&quot;,&quot;Sets aTest to 1 &quot;,
+            &quot;effect&quot;,&quot;(set: $aTest to 1)(set: $bTest to 2)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $NumberOfChoices to it + 1)&#39;)&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;pool&quot;,&quot;general&quot;,
@@ -410,11 +410,13 @@ EXAMPLE:
 Make your choice:
 |=
 {(for: each _i, ...(range:1,$NumberOfChoices))[
-	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
-    (link-repeat: $itemOptions&#39;s _i&#39;s name)[
-    	(set: $choice to _i)
-        (show: ?choice)
-        (hide: ?collectionChoice)
+	(if:$playerAvailableItems is not an empty)[
+    	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
+    	(link-repeat: $itemOptions&#39;s _i&#39;s name)[
+    		(set: $choice to _i)
+            (show: ?choice)
+            (hide: ?collectionChoice)
+		]
 	]
     =|=
 ]}
@@ -432,7 +434,11 @@ Make your choice:
 |==|
 {(link-reveal-goto: &quot;Event One&quot;)[
 	(if: $choice is not &quot;New Collection&quot;)[
-    	(move: $itemOptions&#39;s $choice into $playerItems)(set: $playerAvailableItems to it + $itemOptions)
+    	(set: _l to $playerItems&#39;s length + 1)
+        (if: $playerItems&#39;s 1 is an empty)[(set: _l to 1)]
+    	(move: $itemOptions&#39;s $choice into $playerItems&#39;s _l)
+        (set: $playerAvailableItems to it + $itemOptions)
+        (print: $playerItems&#39;s last&#39;s effect)
 	](else:)[
     	(set: $unlockedCollections to it - (a:$LastCollectionChoice))
     	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is
@@ -449,7 +455,33 @@ All available items:
 (for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
 
 Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Event One" tags="" position="475,725" size="100,100">________________________________________________________
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Event One" tags="" position="500,725" size="100,100">{
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
+&lt;br&gt;
+They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: &quot;Round One&quot;)[]
+(link-reveal-goto: &quot;Round Two&quot;, &quot;Round One&quot;)[]
+(link-reveal-goto: &quot;Round One&quot;)[]
+(link-reveal-goto: &quot;Round Two&quot;, &quot;Round One&quot;)[]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}
+
+
+
+
+________________________________________________________
 --Test Code--
 
 All available items:
@@ -468,8 +500,17 @@ All available items:
 }
 
 Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">(set: $NumberOfChoices to 2)
-(set: $playerItems to (a:))</tw-passagedata><tw-passagedata pid="18" name="decline-gatari" tags="" position="1300,450" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="accept-gatari" tags="" position="1150,450" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="footer" tags="footer" position="1500,300" size="100,100">{
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
+
+(set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
+(set: $reactMeter to .2)&lt;!--Percentage for current public support meter--&gt;
+(set: $communitySupport to (a:))&lt;!--Collection&#39;s status holder--&gt;
+(set: $collectionCount to 0)&lt;!--Number ofdifferent collections held--&gt;
+(set: $level to 0)&lt;!--Current Rouns or Level--&gt;
+(set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
+	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
+
+}</tw-passagedata><tw-passagedata pid="18" name="decline-gatari" tags="" position="1300,450" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="accept-gatari" tags="" position="1150,450" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="footer" tags="footer" position="1500,300" size="100,100">{
 &lt;div class=&quot;footer-body&quot;&gt;
 &lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
 
