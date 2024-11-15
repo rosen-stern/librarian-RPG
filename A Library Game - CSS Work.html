@@ -215,24 +215,183 @@ _________
 |==|
 --&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
 	(a:
-		(dm:&quot;title&quot;,&quot;test event&#39;s name&quot;,
+		(dm:
+        	&quot;title&quot;,&quot;test event 1&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
     		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
-            &quot;effect&quot;,&quot;player&#39;s health -= 2&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;unlocked&quot;,true
 		),
-		(dm:&quot;title&quot;,&quot;test event 2&quot;,
+		(dm:
+        	&quot;title&quot;,&quot;test event 2&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;general&quot;,
-    		&quot;description&quot;,&quot;this is a second test event&quot;,
-            &quot;effect&quot;,&quot;player&#39;s health -= 4&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;unlocked&quot;,true
 		),
-		(dm:&quot;title&quot;,&quot;test vr event&quot;,
+		(dm:
+        	&quot;title&quot;,&quot;test event vr 1&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;vr&quot;,
-    		&quot;description&quot;,&quot;this is a vr test event&quot;,
-            &quot;effect&quot;,&quot;player&#39;s vr -= 4&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event vr 2&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;vr&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event streaming 1&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event streaming 2&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event videogames 1&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event videogames 2&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event heavy&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event vr heavy&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;vr&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event streaming heavy&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event videogames heavy&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event vr final&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;vr&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event streaming final&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;test event videogames final&quot;,
+        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
+            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
+    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
+            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;unlocked&quot;,true
 		)
@@ -406,7 +565,7 @@ EXAMPLE:
 |==|
 --&gt;
 }
-</tw-passagedata><tw-passagedata pid="13" name="Round One" tags="" position="600,600" size="100,100">(set: $itemOptions to (a:))
+</tw-passagedata><tw-passagedata pid="13" name="Round One" tags="" position="525,600" size="100,100">(set: $itemOptions to (a:))(set: $level to it + 1)
 Make your choice:
 |=
 {(for: each _i, ...(range:1,$NumberOfChoices))[
@@ -432,7 +591,15 @@ Make your choice:
 (dropdown: 2bind $LastCollectionChoice, ...$unlockedCollections)
 ]]
 |==|
-{(link-reveal-goto: &quot;Event One&quot;)[
+{
+(if: $level % 3 is 0)[
+	(set: $nextEvent to &quot;Tough Event&quot;)
+](else-if: $level % 10 is 0)[
+	(set: $nextEvent to &quot;Final Event&quot;)
+](else:)[
+	(set: $nextEvent to &quot;Light Event&quot;)
+]
+(link-reveal-goto: $nextEvent)[
 	(if: $choice is not &quot;New Collection&quot;)[
     	(set: _l to $playerItems&#39;s length + 1)
         (if: $playerItems&#39;s 1 is an empty)[(set: _l to 1)]
@@ -455,19 +622,24 @@ All available items:
 (for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
 
 Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Event One" tags="" position="500,725" size="100,100">{
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)
+
+&lt;br&gt;
 Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
+(print: $chosenEvent&#39;s eventText1)
+
 &lt;br&gt;
 They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
+(print: $chosenEvent&#39;s eventText1)
 &lt;/div&gt;
 
 &lt;div class=&quot;choice&quot;&gt;
-(link-reveal-goto: &quot;Round One&quot;)[]
-(link-reveal-goto: &quot;Round Two&quot;, &quot;Round One&quot;)[]
-(link-reveal-goto: &quot;Round One&quot;)[]
-(link-reveal-goto: &quot;Round Two&quot;, &quot;Round One&quot;)[]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -522,7 +694,88 @@ Your current items:
 &lt;/div&gt;
 
 &lt;/div&gt;
-}</tw-passagedata></tw-storydata>
+}</tw-passagedata><tw-passagedata pid="21" name="Tough Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)
+
+&lt;br&gt;
+Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
+(print: $chosenEvent&#39;s eventText1)
+
+&lt;br&gt;
+They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
+(print: $chosenEvent&#39;s eventText1)
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}
+
+
+
+
+________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+
+Your current items:
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="22" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)
+
+&lt;br&gt;
+Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
+(print: $chosenEvent&#39;s eventText1)
+
+&lt;br&gt;
+They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
+(print: $chosenEvent&#39;s eventText1)
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}
+
+
+
+
+________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+
+Your current items:
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="23" name="Resolution" tags="" position="700,875" size="100,100">You win! Or lose lol
+I haven&#39;t been keeping track (yet)
+
+[[Game Over]] </tw-passagedata><tw-passagedata pid="24" name="Game Over" tags="" position="975,875" size="100,100">Play again?
+
+[[Choose Your Starting Collection]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
