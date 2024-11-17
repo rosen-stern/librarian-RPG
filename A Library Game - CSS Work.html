@@ -137,6 +137,12 @@ They offer it as a donation to the growing library video game collection. They a
         &quot;unlockText&quot;,&quot;Click the next passage to find this one...&quot;,
         &quot;effectText&quot;,&quot;Indie Injection: Adds 3 Resources to your Collection&quot;,
         &quot;unlocked&quot;,false
+		),
+        (dm:
+        &quot;citation&quot;,&quot;game console citation&quot;,
+        &quot;unlockText&quot;,&quot;Gain this Item during a General Event&quot;,
+        &quot;effectText&quot;,&quot;This item unlocks videogame collections as a collection option&quot;,
+        &quot;unlocked&quot;,false
 		)
 	)
 )}</tw-passagedata><tw-passagedata pid="3" name="Biblio Command" tags="" position="425,200" size="100,100">Current Bibliography:
@@ -216,15 +222,20 @@ _________
 --&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
 	(a:
 		(dm:
-        	&quot;title&quot;,&quot;test event 1&quot;,
-        	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
-            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;title&quot;,&quot;A Retro Opportunity&quot;,
+        	&quot;eventText1&quot;, &quot;Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console. It looks recently cleaned and dust free.&quot;,
+            &quot;eventText2&quot;,&quot;They offer it as a donation to start the library&#39;s video game collection. They also have several vintage games they are willing to donate. The patron assures you that the console is still fully functional.&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $unlockedCollections to it + (a:&#39;videogames&#39;))
+            	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &#39;videogames&#39;, ...$items))
+                (set: $events&#39;s 7th&#39;s unlocked to true)
+                (set: $events&#39;s 8th&#39;s unlocked to true)
+                (set: $events&#39;s 12th&#39;s unlocked to true)
+                (set: $playerItems to it + (a:$items&#39;s 8th))
+                (set: $communityMeter to it + 0.05)&quot;, &quot;(set: $communityMeter to it - 0.05)&quot;),
+            &quot;choicesText&quot;,(a:&quot;Accept The Console&quot;, &quot;Return The Console&quot;),
+            &quot;citation&quot;,($bib&#39;s 3rd&#39;s citation),
             &quot;unlocked&quot;,true
 		),
 		(dm:
@@ -233,7 +244,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -243,9 +253,8 @@ _________
         	&quot;title&quot;,&quot;test event vr 1&quot;,
         	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
-        	&quot;type&quot;,&quot;vr&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -255,9 +264,8 @@ _________
         	&quot;title&quot;,&quot;test event vr 2&quot;,
         	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
-        	&quot;type&quot;,&quot;vr&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -269,7 +277,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -281,7 +288,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -293,11 +299,10 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
-            &quot;unlocked&quot;,true
+            &quot;unlocked&quot;,false
 		),
         (dm:
         	&quot;title&quot;,&quot;test event videogames 2&quot;,
@@ -305,11 +310,10 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
-            &quot;unlocked&quot;,true
+            &quot;unlocked&quot;,false
 		),
         (dm:
         	&quot;title&quot;,&quot;test event heavy&quot;,
@@ -317,7 +321,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -327,9 +330,8 @@ _________
         	&quot;title&quot;,&quot;test event vr heavy&quot;,
         	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
-        	&quot;type&quot;,&quot;vr&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -341,7 +343,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -353,19 +354,17 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
-            &quot;unlocked&quot;,true
+            &quot;unlocked&quot;,false
 		),
         (dm:
         	&quot;title&quot;,&quot;test event vr final&quot;,
         	&quot;eventText1&quot;, &quot;This is the description of a test scenario&quot;,
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
-        	&quot;type&quot;,&quot;vr&quot;,
-            &quot;difficulty&quot;,&quot;heavy&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -377,7 +376,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -389,7 +387,6 @@ _________
             &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
-    		&quot;description&quot;,&quot;this is a test event&#39;s description&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
@@ -430,7 +427,7 @@ _________
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,&quot;Young&quot;,
         &quot;startingItems&quot;,(a:&quot;Fun&quot;,&quot;Frivolous&quot;),
-        &quot;unlocked&quot;,true
+        &quot;unlocked&quot;,false
         ),
         (dm:&quot;type&quot;,&quot;Magazines&quot;,
         &quot;amount&quot;,2,
@@ -473,7 +470,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
 (set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &quot;general&quot;, ...$items)+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
 }
 
-[[Round One]]
+[[Let&#39;s Begin!]]
 </tw-passagedata><tw-passagedata pid="12" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
 	(a:
         (dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
@@ -523,6 +520,22 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
+		),
+		(dm:&quot;name&quot;,&quot;test item Videogame&quot;,
+    		&quot;description&quot;,&quot;this is a videogame-only test item&quot;,
+            &quot;effect&quot;,&quot;player&#39;s videogame += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a videogame citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;pool&quot;,&quot;VR&quot;,
+            &quot;unlocked&quot;,true,
+		),
+		(dm:&quot;name&quot;,&quot;Gatari 86&quot;,
+    		&quot;description&quot;,&quot;A retro console with games. It doesn&#39;t work, but it&#39;s inspiring.&quot;,
+            &quot;effect&quot;,&quot;(set: $bib&#39;s 3rd&#39;s unlocked to true)&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 3rd&#39;s citation),
+            &quot;pool&quot;,&quot;videogames&quot;,
+            &quot;unlocked&quot;,false,
 		)
 	)
 )
@@ -565,7 +578,7 @@ EXAMPLE:
 |==|
 --&gt;
 }
-</tw-passagedata><tw-passagedata pid="13" name="Round One" tags="" position="525,600" size="100,100">(set: $itemOptions to (a:))(set: $level to it + 1)
+</tw-passagedata><tw-passagedata pid="13" name="Let&#39;s Begin!" tags="" position="525,600" size="100,100">{(set: $itemOptions to (a:))(set: $level to it + 1)(set: $choice to 0)}
 Make your choice:
 |=
 {(for: each _i, ...(range:1,$NumberOfChoices))[
@@ -593,7 +606,7 @@ Make your choice:
 |==|
 {
 (if: $level % 3 is 0)[
-	(set: $nextEvent to &quot;Tough Event&quot;)
+	(set: $nextEvent to &quot;Heavy Event&quot;)
 ](else-if: $level % 10 is 0)[
 	(set: $nextEvent to &quot;Final Event&quot;)
 ](else:)[
@@ -622,24 +635,22 @@ All available items:
 (for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
 
 Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
+(print: $playerItems)</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
 (print: $chosenEvent&#39;s title)
 
 &lt;br&gt;
-Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
 (print: $chosenEvent&#39;s eventText1)
 
 &lt;br&gt;
-They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
-(print: $chosenEvent&#39;s eventText1)
+(print: $chosenEvent&#39;s eventText2)
 &lt;/div&gt;
 
 &lt;div class=&quot;choice&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 2)]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -648,19 +659,7 @@ They offer it as a donation to the growing library video game collection. They a
     	(print: _i&#39;s effect)
     ]
 ]
-}
-
-
-
-
-________________________________________________________
---Test Code--
-
-All available items:
-(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
-
-Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="15" name="timeDance" tags="" position="100,625" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="16" name="good test code" tags="" position="75,475" size="100,100">________________________________________________________
+}</tw-passagedata><tw-passagedata pid="15" name="timeDance" tags="" position="100,625" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="16" name="good test code" tags="" position="75,475" size="100,100">________________________________________________________
 --Test Code--
 
 All available items:
@@ -675,10 +674,10 @@ Your current items:
 (print: $playerItems)</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
 
 (set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
-(set: $reactMeter to .2)&lt;!--Percentage for current public support meter--&gt;
-(set: $communitySupport to (a:))&lt;!--Collection&#39;s status holder--&gt;
+(set: $communityMeter to .2)&lt;!--Percentage for current public support meter--&gt;
+(set: $collectionStatus to (a:))&lt;!--Collection&#39;s current statuses--&gt;
 (set: $collectionCount to 0)&lt;!--Number ofdifferent collections held--&gt;
-(set: $level to 0)&lt;!--Current Rouns or Level--&gt;
+(set: $level to 0)&lt;!--Current Rounds or Level--&gt;
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
 
@@ -694,24 +693,22 @@ Your current items:
 &lt;/div&gt;
 
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="21" name="Tough Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
+}</tw-passagedata><tw-passagedata pid="21" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
 (print: $chosenEvent&#39;s title)
 
 &lt;br&gt;
-Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
 (print: $chosenEvent&#39;s eventText1)
 
 &lt;br&gt;
-They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
-(print: $chosenEvent&#39;s eventText1)
+(print: $chosenEvent&#39;s eventText2)
 &lt;/div&gt;
 
 &lt;div class=&quot;choice&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 2)]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -720,36 +717,22 @@ They offer it as a donation to the growing library video game collection. They a
     	(print: _i&#39;s effect)
     ]
 ]
-}
-
-
-
-
-________________________________________________________
---Test Code--
-
-All available items:
-(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
-
-Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="22" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to $events&#39;s random)
+}</tw-passagedata><tw-passagedata pid="22" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s 1st&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
 (print: $chosenEvent&#39;s title)
 
 &lt;br&gt;
-Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console in excellent condition.
 (print: $chosenEvent&#39;s eventText1)
 
 &lt;br&gt;
-They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
-(print: $chosenEvent&#39;s eventText1)
+(print: $chosenEvent&#39;s eventText2)
 &lt;/div&gt;
 
 &lt;div class=&quot;choice&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Round One&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Resolution&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Resolution&quot;)[(set: $chosenEventsEffect to 2)]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -758,24 +741,40 @@ They offer it as a donation to the growing library video game collection. They a
     	(print: _i&#39;s effect)
     ]
 ]
-}
-
-
-
-
-________________________________________________________
---Test Code--
-
-All available items:
-(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
-
-Your current items:
-(print: $playerItems)</tw-passagedata><tw-passagedata pid="23" name="Resolution" tags="" position="700,875" size="100,100">You win! Or lose lol
+}</tw-passagedata><tw-passagedata pid="23" name="Resolution" tags="" position="725,875" size="100,100">You win! Or lose lol
 I haven&#39;t been keeping track (yet)
 
-[[Game Over]] </tw-passagedata><tw-passagedata pid="24" name="Game Over" tags="" position="975,875" size="100,100">Play again?
+[[Game Over]] </tw-passagedata><tw-passagedata pid="24" name="Game Over" tags="" position="975,875" size="100,100">Play again? 
 
-[[Choose Your Starting Collection]] </tw-passagedata></tw-storydata>
+[[Choose Your Starting Collection]] 
+
+&lt;!--Reset all global variables except All Unlocks--&gt;
+{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
+
+(set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
+(set: $communityMeter to .2)&lt;!--Percentage for current public support meter--&gt;
+(set: $collectionStatus to (a:))&lt;!--Collection&#39;s current statuses--&gt;
+(set: $collectionCount to 0)&lt;!--Number ofdifferent collections held--&gt;
+(set: $level to 0)&lt;!--Current Rounds or Level--&gt;
+(set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
+&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
+}</tw-passagedata><tw-passagedata pid="25" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)}
+
+Your current items:
+(for: each _item, ...$playerItems)[(if: _item is not empty)[(print: &quot; &quot; + _item&#39;s name + &quot;|&quot;)]]
+
+
+Your current amount of choices each turn is: (print: $NumberOfChoices)
+The community is currently behind you (print: $communityMeter*100)%
+Your collection&#39;s current status is: $collectionStatus
+You hold $collectionCount different collections
+
+[[Time passes...-&gt;Let&#39;s Begin!]] 
+________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
