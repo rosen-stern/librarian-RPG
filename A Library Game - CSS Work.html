@@ -145,7 +145,13 @@ They offer it as a donation to the growing library video game collection. They a
         &quot;unlocked&quot;,false
 		)
 	)
-)}</tw-passagedata><tw-passagedata pid="3" name="Biblio Command" tags="" position="425,200" size="100,100">Current Bibliography:
+)
+
+(set: $showBibliography to (macro: num-type _bib, [
+	(output-data: &quot; &quot;+$bib&#39;s _bib&#39;s citation
+    )
+]))
+}</tw-passagedata><tw-passagedata pid="3" name="Biblio Command" tags="" position="425,200" size="100,100">Current Bibliography:
 
 (for:each _bib where _bib&#39;s unlocked is true, ...$bib)[FOUND: (print:_bib&#39;s citation)
 ABILITY: (print:_bib&#39;s effectText)
@@ -235,7 +241,7 @@ _________
                 (set: $playerItems to it + (a:$items&#39;s 8th))
                 (set: $communityMeter to it + 0.05)&quot;, &quot;(set: $communityMeter to it - 0.05)&quot;),
             &quot;choicesText&quot;,(a:&quot;Accept The Console&quot;, &quot;Return The Console&quot;),
-            &quot;citation&quot;,($bib&#39;s 3rd&#39;s citation),
+            &quot;citation&quot;,3,
             &quot;unlocked&quot;,true
 		),
 		(dm:
@@ -246,7 +252,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
 		(dm:
@@ -257,7 +263,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -268,7 +274,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -279,7 +285,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -290,7 +296,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -301,7 +307,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,false
 		),
         (dm:
@@ -312,7 +318,7 @@ _________
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,false
 		),
         (dm:
@@ -323,7 +329,7 @@ _________
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -334,7 +340,7 @@ _________
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -345,7 +351,7 @@ _________
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -356,7 +362,7 @@ _________
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,false
 		),
         (dm:
@@ -367,7 +373,7 @@ _________
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -378,7 +384,7 @@ _________
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
         (dm:
@@ -389,7 +395,7 @@ _________
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
             &quot;choicesText&quot;,(a:&quot;First Effect&quot;, &quot;Second Effect&quot;),
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		)
 	)
@@ -477,7 +483,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;description&quot;,&quot;Sets aTest to 1 &quot;,
             &quot;effect&quot;,&quot;(set: $aTest to 1)(set: $bTest to 2)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $NumberOfChoices to it + 1)&#39;)&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
         ),
@@ -485,7 +491,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;description&quot;,&quot;this is a second test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s health += 4&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 2nd&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
 		),
@@ -493,7 +499,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
             &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
         ),
@@ -501,7 +507,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
             &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
         ),
@@ -509,7 +515,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
             &quot;description&quot;,&quot;this is a stream-only test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s stream += 2&quot;,
             &quot;quote&quot;,&quot;this is a quote from a stream citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
         ),
@@ -517,7 +523,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
     		&quot;description&quot;,&quot;this is a VR-only test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s VR += 2&quot;,
             &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
 		),
@@ -525,7 +531,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
     		&quot;description&quot;,&quot;this is a videogame-only test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s videogame += 2&quot;,
             &quot;quote&quot;,&quot;this is a quote from a videogame citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
 		),
@@ -533,7 +539,7 @@ As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many 
     		&quot;description&quot;,&quot;A retro console with games. It doesn&#39;t work, but it&#39;s inspiring.&quot;,
             &quot;effect&quot;,&quot;(set: $bib&#39;s 3rd&#39;s unlocked to true)&quot;,
             &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 3rd&#39;s citation),
+            &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,false,
 		)
@@ -589,6 +595,7 @@ Make your choice:
             (show: ?choice)
             (hide: ?collectionChoice)
 		]
+       |bib&gt;[(link:&quot;^^`[`&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $itemOptions&#39;s _i&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
 	]
     =|=
 ]}
@@ -612,7 +619,7 @@ Make your choice:
 ](else:)[
 	(set: $nextEvent to &quot;Light Event&quot;)
 ]
-(link-reveal-goto: $nextEvent)[
+Once ready- start your: (link-reveal-goto: $nextEvent)[
 	(if: $choice is not &quot;New Collection&quot;)[
     	(set: _l to $playerItems&#39;s length + 1)
         (if: $playerItems&#39;s 1 is an empty)[(set: _l to 1)]
@@ -639,7 +646,7 @@ Your current items:
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-(print: $chosenEvent&#39;s title)
+(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -758,10 +765,9 @@ I haven&#39;t been keeping track (yet)
 (set: $level to 0)&lt;!--Current Rounds or Level--&gt;
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 &lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
-}</tw-passagedata><tw-passagedata pid="25" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)}
-
-Your current items:
-(for: each _item, ...$playerItems)[(if: _item is not empty)[(print: &quot; &quot; + _item&#39;s name + &quot;|&quot;)]]
+}</tw-passagedata><tw-passagedata pid="25" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
+}Your current items:
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot; &quot; + _item&#39;s name + &quot;|&quot;)]]
 
 
 Your current amount of choices each turn is: (print: $NumberOfChoices)
@@ -774,7 +780,7 @@ ________________________________________________________
 --Test Code--
 
 All available items:
-(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]</tw-passagedata></tw-storydata>
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]</tw-passagedata><tw-passagedata pid="26" name="Untitled Passage 1" tags="" position="775,375" size="100,100">|bib&gt;[(link:&quot;[&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;]&quot;)[($showBibliography: $itemOptions&#39;s _i&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
