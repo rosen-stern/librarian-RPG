@@ -357,7 +357,7 @@ _________
         (dm:
         	&quot;title&quot;,&quot;Server Shutdown&quot;,
         	&quot;eventText1&quot;, &quot;The most popular game in your collection recently shut their servers down, and the game is no longer operationalizable.&quot;,
-            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+            &quot;eventText2&quot;,&quot;Do you replace that game with a similar choice? Or do you want to have a meeting to look for other games that won&#39;t have this problem?&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
@@ -378,12 +378,12 @@ _________
 		),
         (dm:
         	&quot;title&quot;,&quot;Hulflix Plus Video Re-negs Contract&quot;,
-        	&quot;eventText1&quot;, &quot;The primary streaming service has increased their prices across the board and &quot;,
-            &quot;eventText2&quot;,&quot;This is the description of the player&#39;s test choices&quot;,
+        	&quot;eventText1&quot;, &quot;The primary streaming service has increased their prices across the board and patrons are clamoring for the library to get better stream options.&quot;,
+            &quot;eventText2&quot;,&quot;Do you push for a stronger contract? Or do you bring together your state&#39;s libraries to collaboratively negotiate a new contract?&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Dump Contract&quot;, &quot;Rally State Libraries&quot;),
+            &quot;choicesText&quot;,(a:&quot;Go Your Own Way&quot;, &quot;Rally State Libraries&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -428,7 +428,7 @@ _________
         &quot;startingItems&quot;,(a:&quot;Cutting Edge&quot;,&quot;Technical&quot;),
         &quot;unlocked&quot;,true
         ),
-        (dm:&quot;type&quot;,&quot;Videogames&quot;,
+        (dm:&quot;type&quot;,&quot;videogames&quot;,
         &quot;amount&quot;,2,
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,&quot;Young&quot;,
@@ -510,7 +510,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
         ),
-        (dm:&quot;name&quot;,&quot;test item 4&quot;,
+        (dm:&quot;name&quot;,&quot;A New Media Librarian&quot;,
             &quot;description&quot;,&quot;New Media Librarian&quot;,
             &quot;effect&quot;,&quot;&quot;,
             &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation. You&#39;re hired!&quot;,
@@ -624,7 +624,7 @@ Choose an item to add to your collection, or start another collection type. Clic
 {
 (if: $level % 3 is 0)[
 	(set: $nextEvent to &quot;Heavy Event&quot;)
-](else-if: $level % 10 is 0)[
+](else-if: $level % 7 is 0)[
 	(set: $nextEvent to &quot;Final Event&quot;)
 ](else:)[
 	(set: $nextEvent to &quot;Light Event&quot;)
