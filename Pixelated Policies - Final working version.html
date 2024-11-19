@@ -1,0 +1,775 @@
+<tw-storydata name="Pixelated Policies - Final working version" startnode="" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="62f95632-7d11-4e52-9fa4-d686ceaafd84" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --main-bg-color: brown;
+  --red: #913B35;
+  --yellow: #EED17F;
+   --white: #FFFFFF;
+  --black: #000000;
+
+  
+  /* FONTS */
+  --sans-serif-font:"Poppins", sans-serif;
+  --serif-font:"EB Garamond", serif;
+}
+
+
+
+tw-story {
+background-color: var(--white);
+  color: black;
+  font-family: var(--sans-serif-font);
+  margin: 50px;
+}
+
+@media (min-width: 576px) {
+  tw-story {
+    padding: 0%;
+  }
+}
+
+
+
+.body {
+display: flex;
+  width: 75%;
+  gap: 50px;
+  margin: auto;
+}
+
+
+.choice{
+  display: flex;
+  flex-flow: column;  
+  
+    & > tw-hook {
+		background-color: var(--red);
+        padding: 20px;
+        display:inline-block;
+        margin: 10px;
+        clip-path: polygon(0 9%, 100% 0%, 100% 100%, 0 94%);
+      	width: max-content;
+      
+      :hover {
+text-decoration: var(--white) wavy underline;
+      }
+      
+      & > tw-link {
+      color: var(--white);
+         padding: 10px;
+        display: block;
+      }
+      
+      &:nth-child(even of tw-expression){
+      clip-path: polygon(0 0, 100% 5%, 100% 96%, 1% 100%);
+      }
+      
+	}
+ 
+}
+
+
+/*
+FOOTER
+*/
+
+.footer-body{
+  position: fixed;
+  right: 0px;
+  bottom: 0;
+  color: var(--black);
+  text-align: right;
+  margin: 30px;
+}
+
+.footer-header, .footer-content{
+background-color: var(--yellow);
+  padding: 10px;
+}
+
+.footer-header{
+  display:inline-block;
+  clip-path: polygon(0 19%, 100% 5%, 100% 100%, 0 100%);
+  
+}
+
+.footer-content{
+
+	display: flex;
+  gap: 50px;
+clip-path: polygon(0 0, 100% 0, 100% 97%, 0 94%);
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Welcome To Libraryfield" tags="" position="1225,325" size="100,100">{
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage  Gatari 86 console in excellent condition.
+&lt;br&gt;
+They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+[[Accept the donation.-&gt;accept-gatari]]
+[[Decline the donation.-&gt;decline-gatari]]
+&lt;/div&gt;
+
+&lt;/div&gt;
+}</tw-passagedata><tw-passagedata pid="2" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
+	(a:
+    	(dm:
+        &quot;citation&quot;,&quot;This is bibliography text citing a source&quot;,
+        &quot;unlockText&quot;,&quot;This is instructions on how to unlock this bibliography&quot;,
+        &quot;effectText&quot;,&quot;This is the effect this bibliography source unlocked&quot;,
+        &quot;unlocked&quot;,true
+		),
+        (dm:
+        &quot;citation&quot;,&quot;Post, C. (2023). A Colossal Catalog Adventure: Representing Indie Video Games and Game Creators in Library Catalogs. //Cataloging &amp; Classification Quarterly,// 61(7–8), 792–814. (link-repeat:\&quot;https://doi.org/info:doi/10.1080/01639374.2023.2280207\&quot;)[(open-url:\&quot;https://doi.org/info:doi/10.1080/01639374.2023.2280207\&quot;)]&quot;,
+        &quot;unlockText&quot;,&quot;Click the next passage to find this one...&quot;,
+        &quot;effectText&quot;,&quot;Indie Injection: Adds 3 Resources to your Collection&quot;,
+        &quot;unlocked&quot;,false
+		),
+        (dm:
+        &quot;citation&quot;,&quot;game console citation&quot;,
+        &quot;unlockText&quot;,&quot;Gain this Item during a General Event&quot;,
+        &quot;effectText&quot;,&quot;This item unlocks videogame collections as a collection option&quot;,
+        &quot;unlocked&quot;,false
+		)
+	)
+)
+
+(set: $showBibliography to (macro: num-type _bib, [
+	(output-data: &quot; &quot;+$bib&#39;s _bib&#39;s citation
+    )
+]))
+}</tw-passagedata><tw-passagedata pid="3" name="Biblio Command" tags="" position="425,200" size="100,100">Current Bibliography:
+
+(for:each _bib where _bib&#39;s unlocked is true, ...$bib)[FOUND: (print:_bib&#39;s citation)
+ABILITY: (print:_bib&#39;s effectText)
+
+]
+
+(for:each _bib where _bib&#39;s unlocked is false, ...$bib)[LOCKED: (print:_bib&#39;s unlockText)]</tw-passagedata><tw-passagedata pid="4" name="Continue" tags="" position="750,200" size="100,100">(set:$bib&#39;s 2nd&#39;s unlocked to true)
+You&#39;ve unlocked //A Colossal Catalog Adventure//! Check it out below:
+
+_________
+(link:&quot;Show Bibliography&quot;)[(display:&quot;Biblio Command&quot;)]
+
+
+&quot;This is a cited quote&quot;(link:&quot;^^`[2]`^^&quot;)[(print:&quot; &quot;+$bib&#39;s 2nd&#39;s citation)]</tw-passagedata><tw-passagedata pid="5" name="Items (old)" tags="" position="75,350" size="100,100">{(set: $gen_items to 
+	(a:
+		(dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
+    		&quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
+            &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		),
+		(dm:&quot;name&quot;,&quot;test item 2&quot;,
+    		&quot;description&quot;,&quot;this is a second test item&quot;,
+            &quot;effect&quot;,&quot;player&#39;s health += 4&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 2nd&#39;s citation),
+            &quot;unlocked&quot;,true
+		)
+    )
+)
+
+(set: $streaming_items to 
+	(a:
+		(dm:&quot;name&quot;,&quot;test item VR&quot;,
+    		&quot;description&quot;,&quot;this is a VR-only test item&quot;,
+            &quot;effect&quot;,&quot;player&#39;s VR += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		)
+	)
+)
+
+(set: $vr_items to 
+	(a:
+		(dm:&quot;name&quot;,&quot;test item VR&quot;,
+    		&quot;description&quot;,&quot;this is a VR-only test item&quot;,
+            &quot;effect&quot;,&quot;player&#39;s VR += 2&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
+            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
+            &quot;unlocked&quot;,true
+		)
+	)
+)
+
+(set: $makeItem to (macro: num-type _item, [
+    (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:$gen_items&#39;s _item&#39;s name)
+    |=
+    &#39;&#39;Effect&#39;&#39;: (print:$gen_items&#39;s _item&#39;s effect)
+    &#39;&#39;Quote&#39;&#39;: (print:$gen_items&#39;s _item&#39;s quote)
+    &#39;&#39;Description&#39;&#39;: (print:$gen_items&#39;s _item&#39;s description)
+    =|
+    //(print:$gen_items&#39;s _item&#39;s citation)//
+    ]
+]))
+&lt;!-- EXAMPLE:
+|==
+($makeItem: (random: 1,$gen_items&#39;s length))
+==|
+($makeItem: (random: 1,$gen_items&#39;s length))
+|==|
+--&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
+	(a:
+		(dm:
+        	&quot;title&quot;,&quot;A Retro Opportunity&quot;,
+        	&quot;eventText1&quot;, &quot;Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage Gatari 86 console. It looks recently cleaned and dust free.&quot;,
+            &quot;eventText2&quot;,&quot;They offer it as a donation to start the library&#39;s video game collection. They also have several vintage games they are willing to donate. The patron assures you that the console is still fully functional.&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;(set: $unlockedCollections to it + (a:&#39;videogames&#39;))
+            	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &#39;videogames&#39;, ...$items))
+                (set: $events&#39;s 7th&#39;s unlocked to true)
+                (set: $events&#39;s 8th&#39;s unlocked to true)
+                (set: $events&#39;s 12th&#39;s unlocked to true)
+                (set: $playerItems to it + (a:$items&#39;s 8th))
+                (set: $communityMeter to it + 0.05)&quot;, &quot;(set: $communityMeter to it - 0.05)&quot;),
+            &quot;choicesText&quot;,(a:&quot;Accept The Console&quot;, &quot;Return The Console&quot;),
+            &quot;citation&quot;,3,
+            &quot;unlocked&quot;,true
+		),
+		(dm:
+        	&quot;title&quot;,&quot;Citizen Hater&quot;,
+        	&quot;eventText1&quot;, &quot;A patron comes up to your desk to kindly let you know... They HATE all of this newfangled technology! It is rotting the brains of the youth!&quot;,
+            &quot;eventText2&quot;,&quot;They kindly ask that you go back to books (and audio-tapes, movies, CDs, and a long list of other media formats that isn&#39;t your current one)&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a: &quot;Attack&quot;, &quot;Use Magic&quot;, &quot;Flee&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+		(dm:
+        	&quot;title&quot;,&quot;VR Update Crashes OS!&quot;,
+        	&quot;eventText1&quot;, &quot;Your computer&#39;s Operating System has updated and your VR device now no longer loads. The headset is no longer being supported&quot;,
+            &quot;eventText2&quot;,&quot;Do you take the time to retrofit the headset with open-source software? Or do you eat the loss and move on to newer hardware?&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Fix It&quot;, &quot;Chuck It&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Cardboard VR&quot;,
+        	&quot;eventText1&quot;, &quot;You&#39;ve found an older small-scale and cheap VR that seems great for kids!&quot;,
+            &quot;eventText2&quot;,&quot;This could lead to new opportunities, or it might end up being more cheap clutter. Do you investigate?&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Accept (you know, for the kids)&quot;, &quot;Focus on Modern VR&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Streaming Service Ignites Controversy&quot;,
+        	&quot;eventText1&quot;, &quot;Some community members have served you a warning about the content that they are seeing on your current subscription services. It seems a portion of the services focus on 16-wheel trucks and that this group is morally opposed against it. They are threatening to withdraw their patronage.&quot;,
+            &quot;eventText2&quot;,&quot;Do you rebuild bridges and attempt to demystify this community&#39;s bias? Or do you send these complaints up the chain to the streaming service?&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Build a Bridge&quot;, &quot;Wait and See&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;New Streampass+ Upgrade Has A Little Caveat&quot;,
+        	&quot;eventText1&quot;, &quot;One of your collections has upgraded and is asking for you to track new usage stats from your patrons.&quot;,
+            &quot;eventText2&quot;,&quot;What&#39;s the first way that you decide to inform your patrons of these changes?&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Update Website&quot;, &quot;Email Users&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;DMCA Gonna Get You&quot;,
+        	&quot;eventText1&quot;, &quot;Library director is worried about the recent DMCA decisions and is backing off from adding more games to the collection.&quot;,
+            &quot;eventText2&quot;,&quot;Do you push back against this decision?&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Accept The Decision&quot;, &quot;Reject The Decision&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,false
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Stolen Games&quot;,
+        	&quot;eventText1&quot;, &quot;A videogame has gone missing from your collection. You&#39;ve been very careful and while there is the possibility that it did in fact grow legs and walk off, it is unlikely&quot;,
+            &quot;eventText2&quot;,&quot;Do you stop having games in your collection, or hide the games behind your circulation desk?&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;light&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Hide Games Behind Circulation&quot;, &quot;Remove Collection&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,false
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Community Push-back&quot;,
+        	&quot;eventText1&quot;, &quot;The community is tired of all these darn experimental collections!&quot;,
+            &quot;eventText2&quot;,&quot;They&#39;ve got complaints and you&#39;re gonna hear about them!&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Smile and Nod&quot;, &quot;Nod and Smile&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;They Said Games Don&#39;t Make You Violent!&quot;,
+        	&quot;eventText1&quot;, &quot;After hosting a VR event. The fun turns sour as patrons end up accidentally hurting each other while wearing a VR headset. Many band-aids were rushed for.&quot;,
+            &quot;eventText2&quot;,&quot;How do you salvage the situation?&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Tell a few Jokes&quot;, &quot;Send flowers to victims&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Super Streaming Merger&quot;,
+        	&quot;eventText1&quot;, &quot;Business is booming in the streaming world! But not for youuu.&quot;,
+            &quot;eventText2&quot;,&quot;You can&#39;t imagine how much they are asking for!&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Dump Stream Service&quot;, &quot;Renegotiate License&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Server Shutdown&quot;,
+        	&quot;eventText1&quot;, &quot;The most popular game in your collection recently shut their servers down, and the game is no longer operationalizable.&quot;,
+            &quot;eventText2&quot;,&quot;Do you replace that game with a similar choice? Or do you want to have a meeting to look for other games that won&#39;t have this problem?&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Replace Game&quot;, &quot;Re-evaluate Genre Selections&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,false
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Party&#39;s Over Dude&quot;,
+        	&quot;eventText1&quot;, &quot;VR has fallen in popularity, and less patrons are interested in the collection.&quot;,
+            &quot;eventText2&quot;,&quot;Can you prove that VR is still worth hosting the collection in the library?&quot;,
+        	&quot;type&quot;,&quot;VR&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Last Hurrah Event&quot;, &quot;Sell It All&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Hulflix Plus Video Re-negs Contract&quot;,
+        	&quot;eventText1&quot;, &quot;The primary streaming service has increased their prices across the board and patrons are clamoring for the library to get better stream options.&quot;,
+            &quot;eventText2&quot;,&quot;Do you push for a stronger contract? Or do you bring together your state&#39;s libraries to collaboratively negotiate a new contract?&quot;,
+        	&quot;type&quot;,&quot;streaming&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Go Your Own Way&quot;, &quot;Rally State Libraries&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Headhunters&quot;,
+        	&quot;eventText1&quot;, &quot;The Game Company has found you and offered you a cushy industry job&quot;,
+            &quot;eventText2&quot;,&quot;They are definitely making sure you can&#39;t keep librarian-ing! But that pay tho&quot;,
+        	&quot;type&quot;,&quot;videogames&quot;,
+            &quot;difficulty&quot;,&quot;final&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesText&quot;,(a:&quot;Leave The Library&quot;, &quot;Keep Changing The World&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		)
+	)
+)
+
+(set: $displayEvent to (macro: num-type _event, [
+    (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:$events&#39;s _event&#39;s title)
+    |==
+    &#39;&#39;Effect&#39;&#39;: (print:$events&#39;s _event&#39;s effect)
+    &#39;&#39;Citation&#39;&#39;: (print:$events&#39;s _event&#39;s citation)
+    ==|
+    //(print:$events&#39;s _event&#39;s description)//
+    ]
+]))
+
+&lt;!--EXAMPLE: ($displayEvent: (random: 1,$events&#39;s length))--&gt;}</tw-passagedata><tw-passagedata pid="7" name="Collections" tags="startup" position="300,475" size="100,100">{(set: $collections to 
+	(a:
+    	(dm:&quot;type&quot;,&quot;streaming&quot;,
+        &quot;amount&quot;,2,
+        &quot;token&quot;,&quot;@&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Licensed&quot;,&quot;Tenuous&quot;),
+        &quot;unlocked&quot;,true
+        ),
+        (dm:&quot;type&quot;,&quot;VR&quot;,
+        &quot;amount&quot;,1,
+        &quot;token&quot;,&quot;V&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Cutting Edge&quot;,&quot;Technical&quot;),
+        &quot;unlocked&quot;,true
+        ),
+        (dm:&quot;type&quot;,&quot;videogames&quot;,
+        &quot;amount&quot;,2,
+        &quot;token&quot;,&quot;V&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Fun&quot;,&quot;Frivolous&quot;),
+        &quot;unlocked&quot;,false
+        ),
+        (dm:&quot;type&quot;,&quot;Magazines&quot;,
+        &quot;amount&quot;,2,
+        &quot;token&quot;,&quot;V&quot;,
+        &quot;status&quot;,&quot;Young&quot;,
+        &quot;startingItems&quot;,(a:&quot;Chill Licenses&quot;,&quot;Easy&quot;),
+        &quot;unlocked&quot;,false
+        )
+	)
+)
+
+(set: $showCollectionDetails to (macro: dm-type _thisCollection, [(size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:_thisCollection&#39;s type)
+    =||=
+    &#39;&#39;Starting Amount&#39;&#39;: (print:_thisCollection&#39;s amount)
+    &#39;&#39;Starting Token&#39;&#39;: (print:_thisCollection&#39;s token)
+    &#39;&#39;Starting Status&#39;&#39;: (print:_thisCollection&#39;s status)
+    &#39;&#39;Starting Items&#39;&#39;: (print:_thisCollection&#39;s startingItems)
+    =|
+    ]
+]))}</tw-passagedata><tw-passagedata pid="8" name="Untitled Passage" tags="" position="600,0" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
+
+Stardew Valley for Libraries
+
+As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="150,100" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+You&#39;re a new digital librarian, working to improve the digital collection for your library. To start with, what type of media would you like to focus on?
+
+(set: $unlockedCollections to (a:&quot;--choose one--&quot;))(set: $CurrentCollectionChoice to &quot;--choose one--&quot;)(set: $LastCollectionChoice to &quot;--choose one--&quot;)(for:each _coll where _coll&#39;s unlocked is true, ...$collections)[(set: $unlockedCollections to it + (a:_coll&#39;s type))]
+
+(dropdown: 2bind $LastCollectionChoice, ...$unlockedCollections)
+
+&lt;!--(link-rerun:&quot;Show Details...&quot;)[
+(if: $LastCollectionChoice is not &quot;--choose one--&quot;)[
+	($showCollectionDetails: 1st of (find: _coll where _coll&#39;s type is $LastCollectionChoice,
+    ...$collections))
+]]--&gt;
+
+[[Confirm Choice-&gt;Starting Sequence]]
+&lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Starting Sequence" tags="" position="600,475" size="100,100">&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+{(set: $playerCollection to (a:1st of (find: _coll where _coll&#39;s type is $LastCollectionChoice,
+    ...$collections)))
+(set: $unlockedCollections to it - (a:$LastCollectionChoice))
+(set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &quot;general&quot;, ...$items)+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
+}
+
+[[Let&#39;s Begin!]]
+&lt;/div&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
+	(a:
+        (dm:&quot;name&quot;,&quot;Technology Grant For More Items&quot;,
+            &quot;description&quot;,&quot;More items every turn!&quot;,
+            &quot;effect&quot;,&quot;(set: $aTest to 1)(set: $bTest to 2)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $NumberOfChoices to it + 1)&#39;)&quot;,
+            &quot;quote&quot;,&quot;this is a test quote&quot;,
+            &quot;citation&quot;,2,
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+        ),
+        (dm:&quot;name&quot;,&quot;Digital Booksmobile&quot;,
+            &quot;description&quot;,&quot;this is a second test item. Vroom vroom!&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,1,
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+		),
+        (dm:&quot;name&quot;,&quot;Computers 0101 Seminar Series&quot;,
+            &quot;description&quot;,&quot;this is a test item&#39;s description. Beep boop.&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
+            &quot;citation&quot;,2,
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+        ),
+        (dm:&quot;name&quot;,&quot;A New Media Librarian&quot;,
+            &quot;description&quot;,&quot;New Media Librarian&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation. You&#39;re hired!&quot;,
+            &quot;citation&quot;,1,
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+        ),
+        (dm:&quot;name&quot;,&quot;Hulflix Plus Video Subscription&quot;,
+            &quot;description&quot;,&quot;this is a stream-only test item. Possibly cursed.&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a stream citation&quot;,
+            &quot;citation&quot;,2,
+            &quot;pool&quot;,&quot;streaming&quot;,
+            &quot;unlocked&quot;,true,
+        ),
+		(dm:&quot;name&quot;,&quot;Used Occipital Adventure VR Headset&quot;,
+    		&quot;description&quot;,&quot;this is a VR-only test item. Very Meta.&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
+            &quot;citation&quot;,1,
+            &quot;pool&quot;,&quot;VR&quot;,
+            &quot;unlocked&quot;,true,
+		),
+		(dm:&quot;name&quot;,&quot;Super Toni&#39;s Jumping Adventure&quot;,
+    		&quot;description&quot;,&quot;this is a videogame-only test item&quot;,
+            &quot;effect&quot;,&quot;&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a videogame citation&quot;,
+            &quot;citation&quot;,1,
+            &quot;pool&quot;,&quot;VR&quot;,
+            &quot;unlocked&quot;,true,
+		),
+		(dm:&quot;name&quot;,&quot;Gatari 86&quot;,
+    		&quot;description&quot;,&quot;A retro console with games. It doesn&#39;t work, but it&#39;s inspiring.&quot;,
+            &quot;effect&quot;,&quot;(set: $bib&#39;s 3rd&#39;s unlocked to true)(set: $collections&#39;s 3rd&#39;s unlocked to true)&quot;,
+            &quot;quote&quot;,&quot;this is a quote from a VR citation&quot;,
+            &quot;citation&quot;,1,
+            &quot;pool&quot;,&quot;videogames&quot;,
+            &quot;unlocked&quot;,false,
+		)
+	)
+)
+
+(set: $addItem to (macro: str-type _name,[
+	(output-data: (find: _item where _item&#39;s name contains _name, ... $items))
+]))
+
+(set: $printItem to (macro: num-type _item, [
+    (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:$items&#39;s _item&#39;s name)
+    |=
+    &#39;&#39;Effect&#39;&#39;: (print:$items&#39;s _item&#39;s effect)
+    &#39;&#39;Quote&#39;&#39;: (print:$items&#39;s _item&#39;s quote)
+    &#39;&#39;Description&#39;&#39;: (print:$items&#39;s _item&#39;s description)
+    =|
+    //(print:$items&#39;s  _item&#39;s citation)//
+    ]
+]))
+(set: $printItemFromName to (macro: str-type _itemname, [
+	(find: _item where _item&#39;s name contains _itemname, ... $items)
+    (size:0.7)+(box:&quot;=XXXXX=&quot;)+(border:&quot;solid&quot;)+(output:)[\
+    ##(print:$items&#39;s _item&#39;s name)
+    |=
+    &#39;&#39;Effect&#39;&#39;: (print:$items&#39;s _item&#39;s effect)
+    &#39;&#39;Quote&#39;&#39;: (print:$items&#39;s _item&#39;s quote)
+    &#39;&#39;Description&#39;&#39;: (print:$items&#39;s _item&#39;s description)
+    =|
+    //(print:$items&#39;s  _item&#39;s citation)//
+    ]
+]))
+&lt;!--
+EXAMPLE:
+|==
+($printItem: (random: 1,$items&#39;s length))
+==|
+($printItemFromName: &quot;test item streaming&quot;)
+==|
+($printItemFromName: &quot;test item streaming&quot;)
+|==|
+--&gt;
+}
+</tw-passagedata><tw-passagedata pid="13" name="Let&#39;s Begin!" tags="" position="525,600" size="100,100">{&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+(set: $itemOptions to (a:))(set: $level to it + 1)(set: $choice to 0)}
+Choose an item to add to your collection, or start another collection type. Click which item you&#39;d like, then select CONTINUE. 
+|=
+{(for: each _i, ...(range:1,$NumberOfChoices))[
+	(if:$playerAvailableItems is not an empty)[
+    	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
+    	(link-repeat: $itemOptions&#39;s _i&#39;s name)[
+    		(set: $choice to _i)
+            (show: ?choice)
+            (hide: ?collectionChoice)
+		]
+       |bib&gt;[(link:&quot;^^`[`&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $itemOptions&#39;s _i&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+	]
+    =|=
+]}
+{(if: $unlockedCollections&#39;s length &gt; 1)[
+	(link-repeat: &quot;Add a new Collection&quot;)[
+    	(set: $choice to &quot;New Collection&quot;)(hide: ?choice)(show: ?collectionChoice)
+	]
+]}
+=|
+|choice)[(live:0.2s)[(a:$itemOptions&#39;s $choice)]]
+|collectionChoice)[[Add a new collection to your library?
+
+(dropdown: 2bind $LastCollectionChoice, ...$unlockedCollections)
+]]
+|==|
+&lt;br&gt;
+{
+(if: $level % 3 is 0)[
+	(set: $nextEvent to &quot;Heavy Event&quot;)
+](else-if: $level % 7 is 0)[
+	(set: $nextEvent to &quot;Final Event&quot;)
+](else:)[
+	(set: $nextEvent to &quot;Light Event&quot;)
+]
+Click to lock in your choice:
+(link-reveal-goto: $nextEvent)[
+	(if: $choice is not &quot;New Collection&quot;)[
+    	(set: _l to $playerItems&#39;s length + 1)
+        (if: $playerItems&#39;s 1 is an empty)[(set: _l to 1)]
+    	(move: $itemOptions&#39;s $choice into $playerItems&#39;s _l)
+        (set: $playerAvailableItems to it + $itemOptions)
+        (print: $playerItems&#39;s last&#39;s effect)
+	](else:)[
+    	(set: $unlockedCollections to it - (a:$LastCollectionChoice))
+    	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is
+        true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
+        (set: $playerAvailableItems to it + $itemOptions)
+    ]
+]
+&lt;/div&gt;
+&lt;/div&gt;}</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText1)
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText2)
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 2)]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}</tw-passagedata><tw-passagedata pid="15" name="timeDance" tags="" position="100,625" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="16" name="good test code" tags="" position="75,475" size="100,100">________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]
+{
+(set: $playerItems to (a:))
+(set: $playerItems to it + ($addItem: &quot;test item 2&quot;))
+(set: $playerItems to it + ($addItem: &quot;test item&#39;s name&quot;))
+}
+
+Your current items:
+(print: $playerItems)
+
+________________________________________________________
+--Test Code--
+
+All available items:
+(for: each _item, ...$playerAvailableItems)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
+
+(set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
+(set: $communityMeter to .2)&lt;!--Percentage for current public support meter--&gt;
+(set: $collectionStatus to (a:))&lt;!--Collection&#39;s current statuses--&gt;
+(set: $collectionCount to 0)&lt;!--Number ofdifferent collections held--&gt;
+(set: $level to 0)&lt;!--Current Rounds or Level--&gt;
+(set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
+	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
+
+}</tw-passagedata><tw-passagedata pid="18" name="decline-gatari" tags="" position="1300,450" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="accept-gatari" tags="" position="1150,450" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="footer" tags="footer" position="1500,300" size="100,100">{
+&lt;div class=&quot;footer-body&quot;&gt;
+&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
+
+&lt;div class=&quot;footer-content&quot;&gt;
+
+&lt;div class=&quot;footer-item&quot;&gt;Collection&lt;/div&gt;
+&lt;div class=&quot;footer-item&quot;&gt;Community&lt;/div&gt;
+&lt;/div&gt;
+Under Construction! Work in Progress
+&lt;/div&gt;
+}</tw-passagedata><tw-passagedata pid="21" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText1)
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText2)
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Current Stats&quot;)[(set: $chosenEventsEffect to 2)]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}</tw-passagedata><tw-passagedata pid="22" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s 1st&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText1)
+
+&lt;br&gt;
+(print: $chosenEvent&#39;s eventText2)
+&lt;/div&gt;
+
+&lt;div class=&quot;choice&quot;&gt;
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Resolution&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Resolution&quot;)[(set: $chosenEventsEffect to 2)]
+&lt;/div&gt;
+
+&lt;/div&gt;
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+}</tw-passagedata><tw-passagedata pid="23" name="Resolution" tags="" position="725,875" size="100,100">You win! Or lose lol
+I haven&#39;t been keeping track (yet)
+
+[[Game Over]] </tw-passagedata><tw-passagedata pid="24" name="Game Over" tags="" position="975,875" size="100,100">Play again? 
+
+[[Choose Your Starting Collection]] 
+
+&lt;!--Reset all global variables except All Unlocks--&gt;
+{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
+
+(set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
+(set: $communityMeter to .2)&lt;!--Percentage for current public support meter--&gt;
+(set: $collectionStatus to (a:))&lt;!--Collection&#39;s current statuses--&gt;
+(set: $collectionCount to 0)&lt;!--Number ofdifferent collections held--&gt;
+(set: $level to 0)&lt;!--Current Rounds or Level--&gt;
+(set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
+&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
+}</tw-passagedata><tw-passagedata pid="25" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
+}Your current items:
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot; &quot; + _item&#39;s name + &quot;,&quot;)]]
+
+
+Your current amount of choices each turn is: (print: $NumberOfChoices)
+The community is currently behind you (print: $communityMeter*100)%
+Your collection&#39;s current status is: $collectionStatus
+You hold $collectionCount different collections
+
+[[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="26" name="Untitled Passage 1" tags="" position="775,375" size="100,100">|bib&gt;[(link:&quot;[&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;]&quot;)[($showBibliography: $itemOptions&#39;s _i&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]</tw-passagedata></tw-storydata>
