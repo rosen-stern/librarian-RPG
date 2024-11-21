@@ -480,6 +480,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
     ...$collections)))
 (set: $unlockedCollections to it - (a:$LastCollectionChoice))
 (set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &quot;general&quot;, ...$items)+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is $LastCollectionChoice, ...$items))
+(set: $eventsUsed to (a:))
 }
 
 [[Let&#39;s Begin!]]
@@ -604,7 +605,7 @@ Choose an item to add to your collection, or start another collection type. Clic
             (show: ?choice)
             (hide: ?collectionChoice)
 		]
-       |bib&gt;[(link:&quot;^^`[`&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $itemOptions&#39;s _i&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+       |bib&gt;[(link:&quot;^^`[`&quot;+(str:$itemOptions&#39;s _i&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`^^ &quot;)[(rerun:?bib)]($showBibliography: $itemOptions&#39;s _i&#39;s citation)]]
 	]
     =|=
 ]}
@@ -645,11 +646,12 @@ Click to lock in your choice:
     ]
 ]
 &lt;/div&gt;
-&lt;/div&gt;}</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
+&lt;/div&gt;}</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
+(set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -708,11 +710,12 @@ All available items:
 &lt;/div&gt;
 Under Construction! Work in Progress
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="21" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections, ...$events)&#39;s random)
+}</tw-passagedata><tw-passagedata pid="21" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
+(set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -736,7 +739,7 @@ Under Construction! Work in Progress
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-(print: $chosenEvent&#39;s title)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[($showBibliography: $chosenEvent&#39;s citation) (link:&quot;Return&quot;)[(rerun:?bib)]]]
+(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`^^ &quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
