@@ -49,35 +49,51 @@ display: flex;
 }
 
 
+/*
+CHOICES
+*/
+
 .choice{
   display: flex;
   flex-flow: column;  
+  min-width: 35%;
+  max-width: 35%;
   
-    & > tw-hook, & > tw-expression { /* Set the background of the option, like that red parallelogram */
+  /* Cycling choice control */
+  & > tw-expression[name="cycling-link"] > tw-link::before{
+  content: 'Select to change: ';
+  }
+  
+  & > tw-expression[name="cycling-link"] > tw-link{
+   }
+  
+  
+  
+  /* Set the background of the option, like that red parallelogram */
+    & > tw-expression > tw-link, & > tw-hook > tw-link { 
 		background-color: var(--red);
-        padding: 20px;
+        padding: 40px;
         display:inline-block;
-        margin: 10px;
+        margin: 30px;
         clip-path: polygon(0 9%, 100% 0%, 100% 100%, 0 94%);
       	width: max-content;
-      
-      :hover { /* Add squiggle on choice hover */
-text-decoration: var(--white) wavy underline;
-      }
-      
-      & > tw-link { /* Set the color of the choice */
-      color: var(--white);
+            color: var(--white);
       padding: 10px;
       display: block;
-      }
-      
-      &:nth-child(even of tw-expression){
-      clip-path: polygon(0 0, 100% 5%, 100% 96%, 1% 100%);
-      }
-      
+     
 	}
  
 }
+
+tw-link:hover { /* Add squiggle on choice hover */
+		text-decoration: var(--white) wavy underline !important;
+      }
+
+/* not sure why this cna't go in the .choice{} section, but it literally wasn't working at all */
+div.choice > tw-expression:nth-child(2) > tw-link, div.choice > tw-hook:nth-child(2) > tw-link { 
+      clip-path: polygon(0 0, 100% 5%, 100% 96%, 1% 100%);
+        }
+ 
 
 
 /*
@@ -636,12 +652,12 @@ _________
 
 Stardew Valley for Libraries
 
-As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="75,225" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">&lt;div class=&quot;body&quot;&gt;
+As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="75,225" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">{
+(set: $unlockedCollections to (altered: via its type, ...(find: _coll where _coll&#39;s unlocked is true, ...$collections)))
+&lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 You&#39;re a new digital librarian, working to improve the digital collection for your library. To start with, what type of media would you like to focus on?
 
-(set: $unlockedCollections to (altered: via its type, ...(find: _coll where _coll&#39;s unlocked is true, ...$collections)))
-(cycling-link: bind $LastCollectionChoice, ...$unlockedCollections)
 
 &lt;!--(link-rerun:&quot;Show Details...&quot;)[
 (if: $LastCollectionChoice is not &quot;--choose one--&quot;)[
@@ -649,9 +665,15 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
     ...$collections))
 ]]--&gt;
 
-[[Confirm Choice-&gt;Starting Sequence]]
 &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Starting Sequence" tags="" position="600,475" size="100,100">&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;choice&quot;&gt;
+
+(cycling-link: bind $LastCollectionChoice, ...$unlockedCollections)
+
+[[Confirm choice-&gt;Starting Sequence]]
+&lt;/div&gt;
+&lt;/div&gt;
+}</tw-passagedata><tw-passagedata pid="11" name="Starting Sequence" tags="" position="600,475" size="100,100">&lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 {(set: $playerCollection to (a:1st of (find: _coll where _coll&#39;s type is $LastCollectionChoice,
     ...$collections)))
