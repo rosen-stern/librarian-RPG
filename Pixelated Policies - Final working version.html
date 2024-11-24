@@ -1102,15 +1102,21 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 [[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="23" name="Community" tags="no-footer" position="1025,425" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;div&gt;
-&lt;div&gt;&lt;img src=&quot;assets/theater.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;&lt;/div&gt; Community &lt;/div&gt;
-&lt;p&gt;This is the community tab!&lt;/p&gt;
 
+&lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;img src=&quot;assets/theater.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt; &lt;div class=&quot;collection-header&quot;&gt; Community&lt;/div&gt; &lt;/div&gt;
+
+&lt;p&gt;THIS SHOULD SHOW THE COMMUNITY CONTENT !! &lt;/p&gt;
+
+&lt;div class=&quot;collection-wrapper&quot;&gt;
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;.png&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + _item&#39;s name + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)]]
+&lt;/div&gt;
+
+
+&lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
-(link-goto: &quot;Back&quot;, (history:)&#39;s last)
+(link-goto: &quot;↜Back&quot;, (history:)&#39;s last)
 &lt;/div&gt;
 
-&lt;/div&gt;
 &lt;/div&gt;
 }</tw-passagedata><tw-passagedata pid="24" name="Collection" tags="no-footer" position="1025,300" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
