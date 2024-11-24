@@ -51,6 +51,12 @@ display: flex;
 max-width: 65%;
 }
 
+h2{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 /*
 CHOICES
 */
@@ -102,13 +108,18 @@ div.choice > tw-expression:nth-child(2) > tw-link, div.choice > tw-hook:nth-chil
       clip-path: polygon(0 0, 100% 5%, 100% 96%, 1% 100%);
         }
  
+/*
+STAT PAGE
+*/
+
+.stat-section{
+padding: 50px
+}
 
 
 /*
-COLLECTION PAGES
+COLLECTION GRID
 */
-
-
 
 .collection-header-wrapper {
    display: flex;
@@ -116,7 +127,6 @@ COLLECTION PAGES
 }
 
 .collection-header{
-  font-size: 2em;
   margin: 30px;
 }
 
@@ -678,7 +688,7 @@ _________
     &#39;&#39;Starting Items&#39;&#39;: (print:_thisCollection&#39;s startingItems)
     =|
     ]
-]))}</tw-passagedata><tw-passagedata pid="7" name="Untitled Passage" tags="" position="600,0" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
+]))}</tw-passagedata><tw-passagedata pid="7" name="Untitled Passage" tags="" position="425,25" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
 
 Stardew Valley for Libraries
 
@@ -991,27 +1001,30 @@ All available items:
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
 
-}</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="900,350" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="1100,350" size="100,100">{
 &lt;div class=&quot;footer-body&quot;&gt;
-&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
-
-&lt;div class=&quot;footer-content&quot;&gt;
+(link:&#39;&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
+&lt;div class=&quot;footer-content&quot;&gt;&lt;div class=&quot;footer-item&quot;&gt;
+&lt;div&gt;Collection
+&lt;span title=&quot;Your collection includes the items you\&#39;ve curated, collected, and policies that impact your library.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;
+&lt;/div&gt;
+&lt;div&gt; 
+&lt;img src=&quot;assets/case-file.png&quot;/&gt;
+&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 
 &lt;div class=&quot;footer-item&quot;&gt;
-&lt;div&gt;Collection &lt;span title=&quot;Your collection includes the items you&#39;ve curated, collected, and policies that impact your library.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;&lt;/div&gt;
-&lt;div&gt;
-[[&lt;img src=&quot;assets/case-file.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;-&gt;Collection]]
+&lt;div&gt;Community 
+&lt;span title=&quot;Your community level is how much the community approves of and supports your collection.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;footer-item&quot;&gt;
-&lt;div&gt;Community &lt;span title=&quot;Your community level is how much the community approves of and supports your collection.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;&lt;/div&gt;
-&lt;div&gt;
-[[&lt;img src=&quot;assets/theater.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;-&gt;Community]]
-&lt;/div&gt;
-&lt;/tw-link&gt;
+&lt;div&gt; 
+&lt;img src=&quot;assets/theater.png&quot;/&gt;
+&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
+&lt;/div&gt;&#39;)[(goto: &quot;Stats&quot;)]
 &lt;/div&gt;
 }</tw-passagedata><tw-passagedata pid="18" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
@@ -1099,7 +1112,7 @@ Your library currently has $collectionCount different collections
 Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX games
 
 
-[[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="23" name="Community" tags="no-footer" position="1025,425" size="100,100">{
+[[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="23" name="Community" tags="no-footer" position="1225,425" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
@@ -1118,7 +1131,7 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 &lt;/div&gt;
 
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="24" name="Collection" tags="no-footer" position="1025,300" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="24" name="Collection" tags="no-footer" position="1225,300" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
@@ -1136,11 +1149,51 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 &lt;/div&gt;
 
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="25" name="Stat bar" tags="footer" position="900,100" size="100,100">&lt;!-- https://twinery.org/forum/discussion/6576/hide-a-footer-in-only-one-passage-harlowe --&gt;
+}</tw-passagedata><tw-passagedata pid="25" name="Stat bar" tags="footer" position="1100,100" size="100,100">&lt;!-- https://twinery.org/forum/discussion/6576/hide-a-footer-in-only-one-passage-harlowe --&gt;
 {(set: $tags to (passage:)&#39;s tags)
 (if: not ($tags contains &quot;no-footer&quot;))[
 (display: &quot;yesfooter&quot;)]
-(else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="26" name="nofooter" tags="" position="900,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata></tw-storydata>
+(else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="26" name="nofooter" tags="" position="1100,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata><tw-passagedata pid="27" name="Stats" tags="no-footer" position="1225,550" size="100,100">{
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+
+&lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;div class=&quot;collection-header&quot;&gt;&lt;h1&gt;Stats&lt;/h1&gt;&lt;/div&gt; &lt;/div&gt;
+
+&lt;div class=&quot;stat-section&quot;&gt;
+&lt;h2&gt;&lt;img src=&quot;assets/theater.png&quot;/&gt; Community&lt;/h2&gt;
+&lt;p&gt;(print: (round:$communityMeter*100))% of the community is currently behind you.&lt;/p&gt;
+&lt;!-- &lt;p&gt;You have $collectionEnergy Energy left for your collection&lt;/p&gt; --&gt;
+&lt;!-- &lt;p&gt;You are holding on to $collectionAmount games total&lt;/p&gt; --&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class=&quot;stat-section&quot;&gt;
+&lt;h2&gt;&lt;img src=&quot;assets/case-file.png&quot;/&gt; Collection&lt;/h2&gt;
+&lt;p&gt;Your collection&#39;s current status is: $collectionStatus&lt;/p&gt;
+&lt;div class=&quot;collection-wrapper&quot;&gt;
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;.png&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + _item&#39;s name + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)]]
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;choice&quot;&gt;
+(link-goto: &quot;↜Back&quot;, (history:)&#39;s last)
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- FROM THE &quot;CURRENT STATS&quot; PAGE, THAT SEEMS TO BE UNUSED
+(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
+(set: $collectionAmount to it + (random: $collectionAmountMIN,$collectionAmountMAX))
+(if:$communityMeter is &gt; 1)[(set: $communityMeter to 1)]
+
+
+Other Stats:
+Your current amount of choices each turn is: (print: $NumberOfChoices)
+Your library currently has $collectionCount different collections
+Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX games
+--&gt;
+
+}</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
