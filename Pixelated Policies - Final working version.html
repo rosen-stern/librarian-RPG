@@ -93,11 +93,17 @@ CHOICES
       padding: 10px;
       display: block;
       max-width: 100%;
-      text-transform: none;
-     
+      text-transform: lowercase;
 	}
  
+  & > tw-expression > tw-link::first-letter, & > tw-hook > tw-link::first-letter {
+  
+    text-transform: uppercase;
+  }
+  
+  
 }
+
 
 tw-link:hover { /* Add squiggle on choice hover */
 		text-decoration: var(--white) wavy underline !important;
