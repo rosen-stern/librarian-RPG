@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Pixelated Policies - Final working version.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Pixelated Policies - Final working version" startnode="10" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="62f95632-7d11-4e52-9fa4-d686ceaafd84" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+<tw-storydata name="Pixelated Policies - Final working version" startnode="9" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="62f95632-7d11-4e52-9fa4-d686ceaafd84" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --main-bg-color: brown;
@@ -40,14 +40,16 @@ background-color: var(--white);
 }
 
 
-
 .body {
 display: flex;
-  width: 75%;
   gap: 50px;
-  margin: auto;
+  margin: 30px;
 }
 
+.content{
+  min-width: 65%;
+max-width: 65%;
+}
 
 /*
 CHOICES
@@ -57,7 +59,11 @@ CHOICES
   display: flex;
   flex-flow: column;  
   min-width: 35%;
-  max-width: 35%;
+    max-width: 35%;
+ 
+  & > tw-expression, & > tw-hook {
+  width:400px;
+  }
   
   /* Cycling choice control */
   & > tw-expression[name="cycling-link"] > tw-link::before{
@@ -80,6 +86,8 @@ CHOICES
             color: var(--white);
       padding: 10px;
       display: block;
+      max-width: 100%;
+      text-transform: none;
      
 	}
  
@@ -94,6 +102,42 @@ div.choice > tw-expression:nth-child(2) > tw-link, div.choice > tw-hook:nth-chil
       clip-path: polygon(0 0, 100% 5%, 100% 96%, 1% 100%);
         }
  
+
+
+/*
+COLLECTION PAGES
+*/
+
+
+
+.collection-header-wrapper {
+   display: flex;
+   align-items:center;
+}
+
+.collection-header{
+  font-size: 2em;
+  margin: 30px;
+}
+
+.collection-wrapper {
+	margin-top: 40px;
+  
+}
+
+.collection-wrapper > tw-hook{
+	display: flex;
+	 gap: 10px;
+}
+
+.collection-item-wrapper{
+  width: 400px;
+ padding: 20px;
+border: 1px solid black;
+  display: block;
+   display: flex;
+   align-items:center;
+}
 
 
 /*
@@ -142,21 +186,7 @@ IMAGES
 img {
 max-width: 75px;
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Welcome To Libraryfield" tags="" position="1225,325" size="100,100">{
-&lt;div class=&quot;body&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-Someone walks into the library and stops at the front desk. They place a large bag on the table and take out a vintage  Gatari 86 console in excellent condition.
-&lt;br&gt;
-They offer it as a donation to the growing library video game collection. They also have several vintage, high-value games they are willing to donate.
-&lt;/div&gt;
-
-&lt;div class=&quot;choice&quot;&gt;
-[[Accept the donation.-&gt;accept-gatari]]
-[[Decline the donation.-&gt;decline-gatari]]
-&lt;/div&gt;
-
-&lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="2" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
 	(a:
     	(dm:
         &quot;citation&quot;,&quot;This is bibliography text citing a source&quot;,
@@ -292,21 +322,21 @@ Knab, Sheryl, et al. “Now Streaming: A Consortial PDA Video Pilot Project.” 
 	(output-data: &quot; &quot;+$bib&#39;s _bib&#39;s quote
     )
 ]))
-}</tw-passagedata><tw-passagedata pid="3" name="Biblio Command" tags="" position="425,150" size="100,100">Current Bibliography:
+}</tw-passagedata><tw-passagedata pid="2" name="Biblio Command" tags="" position="425,150" size="100,100">Current Bibliography:
 
 (for:each _bib where _bib&#39;s unlocked is true, ...$bib)[FOUND: (print:_bib&#39;s citation)
 ABILITY: (print:_bib&#39;s effectText)
 
 ]
 
-(for:each _bib where _bib&#39;s unlocked is false, ...$bib)[LOCKED: (print:_bib&#39;s unlockText)]</tw-passagedata><tw-passagedata pid="4" name="Continue" tags="" position="525,150" size="100,100">(set:$bib&#39;s 2nd&#39;s unlocked to true)
+(for:each _bib where _bib&#39;s unlocked is false, ...$bib)[LOCKED: (print:_bib&#39;s unlockText)]</tw-passagedata><tw-passagedata pid="3" name="Continue" tags="" position="525,150" size="100,100">(set:$bib&#39;s 2nd&#39;s unlocked to true)
 You&#39;ve unlocked //A Colossal Catalog Adventure//! Check it out below:
 
 _________
 (link:&quot;Show Bibliography&quot;)[(display:&quot;Biblio Command&quot;)]
 
 
-&quot;This is a cited quote&quot;(link:&quot;^^`[2]`^^&quot;)[(print:&quot; &quot;+$bib&#39;s 2nd&#39;s citation)]</tw-passagedata><tw-passagedata pid="5" name="Items (old)" tags="" position="75,350" size="100,100">{(set: $gen_items to 
+&quot;This is a cited quote&quot;(link:&quot;^^`[2]`^^&quot;)[(print:&quot; &quot;+$bib&#39;s 2nd&#39;s citation)]</tw-passagedata><tw-passagedata pid="4" name="Items (old)" tags="" position="75,350" size="100,100">{(set: $gen_items to 
 	(a:
 		(dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
     		&quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
@@ -366,7 +396,7 @@ _________
 ==|
 ($makeItem: (random: 1,$gen_items&#39;s length))
 |==|
---&gt;}</tw-passagedata><tw-passagedata pid="6" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
+--&gt;}</tw-passagedata><tw-passagedata pid="5" name="Events" tags="startup" position="300,225" size="100,100">{(set: $events to 
 	(a:
 		(dm:
         	&quot;title&quot;,&quot;A Retro Opportunity&quot;,
@@ -606,7 +636,7 @@ _________
     ]
 ]))
 
-&lt;!--EXAMPLE: ($displayEvent: (random: 1,$events&#39;s length))--&gt;}</tw-passagedata><tw-passagedata pid="7" name="Collections" tags="startup" position="300,475" size="100,100">{(set: $collections to 
+&lt;!--EXAMPLE: ($displayEvent: (random: 1,$events&#39;s length))--&gt;}</tw-passagedata><tw-passagedata pid="6" name="Collections" tags="startup" position="300,475" size="100,100">{(set: $collections to 
 	(a:
     	(dm:&quot;type&quot;,&quot;streaming&quot;,
         &quot;amount&quot;,2,
@@ -648,11 +678,11 @@ _________
     &#39;&#39;Starting Items&#39;&#39;: (print:_thisCollection&#39;s startingItems)
     =|
     ]
-]))}</tw-passagedata><tw-passagedata pid="8" name="Untitled Passage" tags="" position="600,0" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
+]))}</tw-passagedata><tw-passagedata pid="7" name="Untitled Passage" tags="" position="600,0" size="100,100">While this game has depictions of librarians working, this is by no means an accurate depiction of the huge amount of work librarians do. We are first-quarter library students, making a project to analyze and identify researched scenarios around non-traditional media formats. We mean no offense by our pure imagining (or maybe more kindly put, playful speculating) of how library collections operate in the real world. We&#39;re VERY new at this! :D
 
 Stardew Valley for Libraries
 
-As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="9" name="Note for Images" tags="" position="75,225" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="10" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">{
+As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="8" name="Note for Images" tags="" position="75,225" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="9" name="Choose Your Starting Collection" tags="" position="600,350" size="100,100">{
 (set: $unlockedCollections to (altered: via its type, ...(find: _coll where _coll&#39;s unlocked is true, ...$collections)))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -670,10 +700,10 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
 
 (cycling-link: bind $LastCollectionChoice, ...$unlockedCollections)
 
-[[Confirm choice-&gt;Starting Sequence]]
+[[Confirm choice choice choice choice choice choice choice choice choice choice-&gt;Starting Sequence]]
 &lt;/div&gt;
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="11" name="Starting Sequence" tags="" position="600,475" size="100,100">&lt;div class=&quot;body&quot;&gt;
+}</tw-passagedata><tw-passagedata pid="10" name="Starting Sequence" tags="" position="600,475" size="100,100">&lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 {(set: $playerCollection to (a:1st of (find: _coll where _coll&#39;s type is $LastCollectionChoice,
     ...$collections)))
@@ -686,7 +716,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
 [[Let&#39;s Begin!]]
 &lt;/div&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="12" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
+</tw-passagedata><tw-passagedata pid="11" name="Items" tags="startup" position="300,350" size="100,100">{(set: $items to 
 	(a:
         (dm:&quot;name&quot;,&quot;Technology Grant For More Items&quot;,
             &quot;description&quot;,&quot;More items every turn!&quot;,
@@ -694,6 +724,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
         ),
         (dm:&quot;name&quot;,&quot;Digital Booksmobile&quot;,
             &quot;description&quot;,&quot;this is a second test item. Vroom vroom!&quot;,
@@ -701,6 +732,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;backpack&quot;,
 		),
         (dm:&quot;name&quot;,&quot;Computers 0101 Seminar Series&quot;,
             &quot;description&quot;,&quot;this is a test item&#39;s description. Beep boop.&quot;,
@@ -708,6 +740,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
         ),
         (dm:&quot;name&quot;,&quot;A New Media Librarian&quot;,
             &quot;description&quot;,&quot;New Media Librarian&quot;,
@@ -715,6 +748,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
         ),
         (dm:&quot;name&quot;,&quot;Hulflix Plus Video Subscription&quot;,
             &quot;description&quot;,&quot;this is a stream-only test item. Possibly cursed.&quot;,
@@ -722,6 +756,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
         ),
 		(dm:&quot;name&quot;,&quot;Used Occipital Adventure VR Headset&quot;,
     		&quot;description&quot;,&quot;this is a VR-only test item. Very Meta.&quot;,
@@ -729,6 +764,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Super Toni&#39;s Jumping Adventure&quot;,
     		&quot;description&quot;,&quot;this is a videogame-only test item&quot;,
@@ -736,6 +772,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Gatari 86&quot;,
     		&quot;description&quot;,&quot;A retro console with games. It doesn&#39;t work, but it&#39;s inspiring.&quot;,
@@ -743,6 +780,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,false,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Upgraded library database website&quot;,
     		&quot;description&quot;,&quot;A new and improved database for patrons to more easily search the library&#39;s collection online.&quot;,
@@ -750,6 +788,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,12,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Dedicated Games Space&quot;,
     		&quot;description&quot;,&quot;Gamerz only in this section! Just kidding. But it is where all the games are.&quot;,
@@ -757,6 +796,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,13,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Swintendo Nitch&quot;,
     		&quot;description&quot;,&quot;A new type of console that can be handheld or docked to a screen, and is often used for multiplayer games.&quot;,
@@ -764,6 +804,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,14,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Digitization&quot;,
     		&quot;description&quot;,&quot;Instead of cartridges, you have the cloud!&quot;,
@@ -772,6 +813,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,15,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Treetop&quot;,
     		&quot;description&quot;,&quot;They aren&#39;t the newest movies, but you can host a much wider selection of media once more people find out.&quot;,
@@ -779,6 +821,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,16,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;PDA Trial&quot;,
     		&quot;description&quot;,&quot;Patron Driven Acquisitions! An item was added to the library, and you can&#39;t get rid of it anymore... Oh well, it was worth it!&quot;,
@@ -787,6 +830,7 @@ You&#39;re a new digital librarian, working to improve the digital collection fo
             &quot;citation&quot;,17,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;pc&quot;,
 		)
 	)
 )
@@ -829,7 +873,7 @@ EXAMPLE:
 |==|
 --&gt;
 }
-</tw-passagedata><tw-passagedata pid="13" name="Let&#39;s Begin!" tags="" position="525,600" size="100,100">{(set: $itemOptions to (a:))
+</tw-passagedata><tw-passagedata pid="12" name="Let&#39;s Begin!" tags="" position="525,600" size="100,100">{(set: $itemOptions to (a:))
 (set: $level to it + 1)
 (set: $choice to 0)
 &lt;div class=&quot;body&quot;&gt;
@@ -892,7 +936,7 @@ Click to lock in your choice:
     ]
 ]
 &lt;/div&gt;
-&lt;/div&gt;}</tw-passagedata><tw-passagedata pid="14" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
+&lt;/div&gt;}</tw-passagedata><tw-passagedata pid="13" name="Light Event" tags="" position="500,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -917,7 +961,7 @@ Click to lock in your choice:
     	(print: _i&#39;s effect)
     ]
 ]
-}</tw-passagedata><tw-passagedata pid="15" name="timeDance" tags="" position="75,550" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="16" name="good test code" tags="" position="75,450" size="100,100">________________________________________________________
+}</tw-passagedata><tw-passagedata pid="14" name="timeDance" tags="" position="75,550" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="15" name="good test code" tags="" position="75,450" size="100,100">________________________________________________________
 --Test Code--
 
 All available items:
@@ -931,7 +975,7 @@ ________________________________________________________
 
 All available items:
 (print: (altered: via its name, ...$playerAvailableItems))
-</tw-passagedata><tw-passagedata pid="17" name="Global Variables" tags="startup" position="300,600" size="100,100">{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
+</tw-passagedata><tw-passagedata pid="16" name="Global Variables" tags="startup" position="300,600" size="100,100">{(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
 
 (set: $playerItems to (a:(dm:)))&lt;!--Player Items Holder--&gt;
 
@@ -947,7 +991,7 @@ All available items:
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
 
-}</tw-passagedata><tw-passagedata pid="18" name="decline-gatari" tags="" position="1300,450" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="accept-gatari" tags="" position="1150,450" size="100,100"></tw-passagedata><tw-passagedata pid="20" name="yesfooter" tags="" position="1700,300" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="900,350" size="100,100">{
 &lt;div class=&quot;footer-body&quot;&gt;
 &lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
 
@@ -969,7 +1013,7 @@ All available items:
 
 &lt;/div&gt;
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="21" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
+}</tw-passagedata><tw-passagedata pid="18" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -994,7 +1038,7 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
-}</tw-passagedata><tw-passagedata pid="22" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s 1st&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
+}</tw-passagedata><tw-passagedata pid="19" name="Final Event" tags="" position="750,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s 1st&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
@@ -1018,10 +1062,10 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
-}</tw-passagedata><tw-passagedata pid="23" name="Resolution" tags="" position="725,875" size="100,100">You win! Or lose lol
+}</tw-passagedata><tw-passagedata pid="20" name="Resolution" tags="" position="725,875" size="100,100">You win! Or lose lol
 I haven&#39;t been keeping track (yet)
 
-[[Game Over]] </tw-passagedata><tw-passagedata pid="24" name="Game Over" tags="" position="975,875" size="100,100">Play again? 
+[[Game Over]] </tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">Play again? 
 
 [[Choose Your Starting Collection]] 
 
@@ -1035,7 +1079,7 @@ I haven&#39;t been keeping track (yet)
 (set: $level to 0)&lt;!--Current Rounds or Level--&gt;
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 &lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
-}</tw-passagedata><tw-passagedata pid="25" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
+}</tw-passagedata><tw-passagedata pid="22" name="Current Stats" tags="" position="575,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
 (set: $collectionAmount to it + (random: $collectionAmountMIN,$collectionAmountMAX))
 (if:$communityMeter is &gt; 1)[(set: $communityMeter to 1)]
 }
@@ -1055,7 +1099,7 @@ Your library currently has $collectionCount different collections
 Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX games
 
 
-[[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="26" name="Community" tags="no-footer" position="1825,375" size="100,100">{
+[[Time passes...-&gt;Let&#39;s Begin!]] </tw-passagedata><tw-passagedata pid="23" name="Community" tags="no-footer" position="1025,425" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;div&gt;
@@ -1068,26 +1112,29 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 
 &lt;/div&gt;
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="27" name="Collection" tags="no-footer" position="1825,250" size="100,100">{
+}</tw-passagedata><tw-passagedata pid="24" name="Collection" tags="no-footer" position="1025,300" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;div&gt;
-&lt;div&gt;&lt;img src=&quot;assets/case-file.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;&lt;/div&gt; Collection &lt;/div&gt;
-&lt;p&gt;This is the community tab!&lt;/p&gt;
+
+&lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;img src=&quot;assets/case-file.png&quot;/&gt;&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt; &lt;div class=&quot;collection-header&quot;&gt; Collection &lt;/div&gt; &lt;/div&gt;
 
 
+&lt;div class=&quot;collection-wrapper&quot;&gt;
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;.png&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + _item&#39;s name + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)]]
+&lt;/div&gt;
 
+
+&lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
-(link-goto: &quot;Back&quot;, (history:)&#39;s last)
+(link-goto: &quot;↜Back&quot;, (history:)&#39;s last)
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="28" name="footer manager" tags="footer" position="1700,50" size="100,100">&lt;!-- https://twinery.org/forum/discussion/6576/hide-a-footer-in-only-one-passage-harlowe --&gt;
+}</tw-passagedata><tw-passagedata pid="25" name="Stat bar" tags="footer" position="900,100" size="100,100">&lt;!-- https://twinery.org/forum/discussion/6576/hide-a-footer-in-only-one-passage-harlowe --&gt;
 {(set: $tags to (passage:)&#39;s tags)
 (if: not ($tags contains &quot;no-footer&quot;))[
 (display: &quot;yesfooter&quot;)]
-(else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="29" name="nofooter" tags="" position="1700,175" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata></tw-storydata>
+(else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="26" name="nofooter" tags="" position="900,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
