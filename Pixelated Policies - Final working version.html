@@ -927,7 +927,7 @@ EXAMPLE:
   ]
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;h1&gt;Choose a new item&lt;/h1&gt;
+&lt;h3&gt;Choose a new item&lt;/h3&gt;
 &lt;p&gt;With a new month comes new additions to your library.&lt;/p&gt; 
 &lt;p&gt;Choose an item or start a new collection.&lt;/p&gt;
 &lt;/div&gt;
@@ -944,9 +944,10 @@ EXAMPLE:
     ]
     
     (if: $unlockedCollections&#39;s length &gt; 0)[
+    &lt;h4&gt;Or start a new collection&lt;/h4&gt;
     (for: each _collectionType, ...$unlockedCollections)[
     &lt;div class=&quot;choice-item&quot;&gt;
-(link: &quot;New &quot; +  _collectionType + &quot; collection&quot;)[
+(link: _collectionType)[
 (set: $choice to &quot;New collection&quot;)
 	(set: $LastCollectionChoice to _collectionType)
 	(go-to: &quot;Starting Sequence&quot;)
@@ -965,11 +966,11 @@ EXAMPLE:
 &lt;div class=&quot;content&quot;&gt;
 
 
-&lt;h1&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
+&lt;h4&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
 
      |bib&gt;[(link:&quot;^^`[`&quot;+(str: $chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $chosenEvent&#39;s citation)]]
 
-&lt;/h1&gt;
+&lt;/h4&gt;
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -1053,7 +1054,7 @@ All available items:
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-&lt;h1&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Quote`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $chosenEvent&#39;s citation)](link:&quot;^^`[`Citation`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]]&lt;/h1&gt;
+&lt;h4&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Quote`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $chosenEvent&#39;s citation)](link:&quot;^^`[`Citation`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]]&lt;/h4&gt;
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -1081,7 +1082,7 @@ All available items:
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-&lt;h1&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Quote`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $chosenEvent&#39;s citation)](link:&quot;^^`[`Citation`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]]&lt;/h1&gt;
+&lt;h4&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)|bib&gt;[(link:&quot;^^`[`&quot;+(str:$chosenEvent&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Quote`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $chosenEvent&#39;s citation)](link:&quot;^^`[`Citation`]`  ^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showBibliography: $chosenEvent&#39;s citation)]]]&lt;/h4&gt;
 
 &lt;br&gt;
 (print: $chosenEvent&#39;s eventText1)
@@ -1197,7 +1198,9 @@ $showBibliography
 
 &lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
+&lt;div class=&quot;choice-item&quot;&gt;
 (link-goto: &quot;↜Back&quot;, (history:)&#39;s last)
+&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
