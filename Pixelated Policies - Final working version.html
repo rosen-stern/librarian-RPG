@@ -1034,7 +1034,6 @@ All available items:
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
 
 }</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="1100,350" size="100,100">{
-&lt;div class=&quot;footer-body&quot;&gt;
 (link:&#39;&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
 &lt;div class=&quot;footer-content&quot;&gt;&lt;div class=&quot;footer-item&quot;&gt;
 &lt;div&gt;Collection
@@ -1057,7 +1056,6 @@ All available items:
 
 &lt;/div&gt;
 &lt;/div&gt;&#39;)[(goto: &quot;Stats&quot;)]
-&lt;/div&gt;
 }</tw-passagedata><tw-passagedata pid="18" name="Heavy Event" tags="" position="625,725" size="100,100">{(set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 &lt;div class=&quot;body&quot;&gt;
@@ -1180,10 +1178,17 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 
 
 </tw-passagedata><tw-passagedata pid="23" name="Stat bar" tags="footer" position="1100,100" size="100,100">&lt;!-- https://twinery.org/forum/discussion/6576/hide-a-footer-in-only-one-passage-harlowe --&gt;
-{(set: $tags to (passage:)&#39;s tags)
+{
+&lt;div class=&quot;footer-body&quot;&gt;
+(set: $tags to (passage:)&#39;s tags)
 (if: not ($tags contains &quot;no-footer&quot;))[
 (display: &quot;yesfooter&quot;)]
-(else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="24" name="nofooter" tags="" position="1100,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata><tw-passagedata pid="25" name="Stats" tags="no-footer" position="1100,475" size="100,100">{
+(else:)[(display: &quot;nofooter&quot;)]
+&lt;h5&gt;&lt;a  href=&quot;https://docs.google.com/forms/d/e/1FAIpQLScF3glesv3KDQf1mbQjyauDisMqbGNksrU8x007mGnSC7losA/viewform&quot; target=&quot;_blank&quot;&gt; Send us feedback in this form! &lt;/a&gt;&lt;/h5&gt;
+&lt;/div&gt;
+}
+
+</tw-passagedata><tw-passagedata pid="24" name="nofooter" tags="" position="1100,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata><tw-passagedata pid="25" name="Stats" tags="no-footer" position="1100,475" size="100,100">{
 &lt;div class=&quot;body stats&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
