@@ -24,7 +24,9 @@
   --serif-font:"EB Garamond", serif;
 }
 
-
+html {
+width: 100%;
+}
 
 tw-story {
 background-color: var(--white);
@@ -46,9 +48,19 @@ display: flex;
   margin: 30px;
 }
 
+
+.body.stats{
+flex-direction: row-reverse;
+  float: left;
+}
+
+.body.stats > .content, .body.stats > .choice {
+min-width: unset;
+  max-width: unset;
+}
+
 .content{
-  min-width: 55%;
-max-width: 55%;
+
 }
 
 h2{
@@ -64,8 +76,11 @@ CHOICES
 .choice{
   display: flex;
   flex-flow: column;  
+
+  /*
   min-width: 45%;
     max-width: 45%;
+  */
   
   /* Set the background of the option, like that red parallelogram */
    .choice-item { 
@@ -120,14 +135,11 @@ COLLECTION GRID
   margin: 30px;
 }
 
-.collection-wrapper {
-	margin-top: 40px;
-  
-}
 
 .collection-wrapper > tw-hook{
 	display: flex;
 	 gap: 10px;
+  flex-wrap: wrap;
 }
 
 .collection-item-wrapper{
@@ -196,15 +208,12 @@ QUOTES
   margin-left: 10px;
 background-color: white;
   color: black;
-  display: block;
-  position: relative;
-  width: 75%;
-  top:20px;
-  margin-bottom: 40px;
+  width: 400px;
   font-size: 1em;
   font-weight: normal;
   line-height: auto;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
+  padding: 10px;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-tag name="stats" color="yellow"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
 	(a:
     	(dm:
         &quot;citation&quot;,&quot;This is bibliography text citing a source&quot;,
@@ -1168,7 +1177,7 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 (if: not ($tags contains &quot;no-footer&quot;))[
 (display: &quot;yesfooter&quot;)]
 (else:)[(display: &quot;nofooter&quot;)]}</tw-passagedata><tw-passagedata pid="24" name="nofooter" tags="" position="1100,225" size="100,100">&lt;!--Show nothing, because there shouldn&#39;t be a footer. Mainly used on the Collection and Community screens so there isn&#39;t an infinite amount of back and forth loops! --&gt;</tw-passagedata><tw-passagedata pid="25" name="Stats" tags="no-footer" position="1100,475" size="100,100">{
-&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;body stats&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
 &lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;div class=&quot;collection-header&quot;&gt;&lt;h1&gt;Stats&lt;/h1&gt;&lt;/div&gt; &lt;/div&gt;
