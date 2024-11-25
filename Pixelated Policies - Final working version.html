@@ -62,7 +62,6 @@ CHOICES
 */
 
 .choice{
-  text-align: right;
   display: flex;
   flex-flow: column;  
   min-width: 45%;
@@ -72,9 +71,10 @@ CHOICES
    .choice-item { 
      
 		background-color: var(--red);
-        padding: 40px;
+
         display:inline-block;
         margin: 30px;
+     margin-left: 0px;
         color: var(--white) !important;
       padding: 10px;
       display: block;
@@ -944,7 +944,7 @@ EXAMPLE:
     ]
     
     (if: $unlockedCollections&#39;s length &gt; 0)[
-    &lt;h4&gt;Or start a new collection&lt;/h4&gt;
+    &lt;h4&gt;Or start a new collection:&lt;/h4&gt;
     (for: each _collectionType, ...$unlockedCollections)[
     &lt;div class=&quot;choice-item&quot;&gt;
 (link: _collectionType)[
