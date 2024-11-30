@@ -542,7 +542,7 @@ _________
             &quot;eventText2&quot;,&quot;That money could be put to better use elsewhere, but then again, maybe someone will need them soon?&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;(set: $playerItems to it - $playerItems&#39;s (random:1,$playerItems&#39;s length))&quot;, &quot;(if: $collectionStatus contains &#39;Young&#39;)[(set: $collectionStatus to it - &#39;Young&#39;)(set: $collectionStatus to it + &#39;Old&#39;)]&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(move: (either: ...$playerItems) into  _bin)&quot;, &quot;(if: $collectionStatus contains &#39;Young&#39;)[(set: $collectionStatus to it - &#39;Young&#39;)(set: $collectionStatus to it + &#39;Old&#39;)]&quot;),
             &quot;choicesText&quot;,(a: &quot;Clear Out The Materials&quot;, &quot;Keep Them Just In Case&quot;),
             &quot;citation&quot;,9,
             &quot;unlocked&quot;,true
@@ -575,7 +575,7 @@ _________
             &quot;eventText2&quot;,&quot;The local server would use a significant amount of your budget and would take several weeks to set up correctly, but it would practically pay for itself in a month or two.&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $collectionAmountMAX to $collectionAmountMIN)(set: $collectionStatus to it + (a:&#39;Backed Up&#39;))&quot;, &quot;&quot;),
             &quot;choicesText&quot;,(a: &quot;Set it up&quot;, &quot;Save the money and time&quot;),
             &quot;citation&quot;,26,
             &quot;unlocked&quot;,true
@@ -586,7 +586,7 @@ _________
             &quot;eventText2&quot;,&quot;Do you take the time to retrofit the headset with open-source software? Or do you eat the loss and move on to newer hardware?&quot;,
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it / 2)(set: $communityMeter to it + .05)(set: $collectionAmountMIN to it + 1)(set: $collectionAmountMAX to it + 2)&quot;, &quot;(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)&quot;),
             &quot;choicesText&quot;,(a:&quot;Fix It&quot;, &quot;Chuck It&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
@@ -597,7 +597,7 @@ _________
             &quot;eventText2&quot;,&quot;Will you set something up just for them to be able to regularly use at certain times in a private room? Or do you make sure your equipment stays available for everyone so as not to give certain users privileges over others?&quot;,
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $collectionStatus to it + (a:&#39;Loved&#39;))&quot;, &quot;(set: $communityMeter to it + .05)&quot;),
             &quot;choicesText&quot;,(a:&quot;Organize a personal schedule&quot;, &quot;Enforce current protocol&quot;),
             &quot;citation&quot;,28,
             &quot;unlocked&quot;,true
@@ -608,8 +608,8 @@ _________
             &quot;eventText2&quot;,&quot;During the event, a young patron wearing the headset swings wide and hits another young patron. This causes a scuffle around the equipment. What is the first thing you do?&quot;,
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Secure The Equipment&quot;, &quot;Talk It Out&quot;,&quot;Secure The Children&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .15)&quot;, &quot;(set: $collectionEnergy to it - 2)&quot;, &quot;(set: $communityMeter to it + .05)(set: $collectionEnergy to it - 1)&quot;),
+            &quot;choicesText&quot;,(a:&quot;Secure The Equipment&quot;, &quot;Talk It Out&quot;, &quot;Secure The Children&quot;),
             &quot;citation&quot;,6,
             &quot;unlocked&quot;,true
 		),
@@ -641,8 +641,8 @@ _________
             &quot;eventText2&quot;,&quot;While this is good when few members use it, the library should generally promote the available resources.&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Keep it quiet&quot;, &quot;Promote the service&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .05)(set: $collectionEnergy to it + 1)(set: $collectionAmount to it + 5)&quot;, &quot;(set: $collectionEnergy to it - 1)(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionEnergy to it - 2)](else:)[(set: $collectionStatus to it + (a:&#39;Expensive&#39;))](set: $communityMeter to it + .1)&quot;),
+            &quot;choicesText&quot;,(a:&quot;Let patrons find the service themselves&quot;, &quot;Promote the service&quot;),
             &quot;citation&quot;,27,
             &quot;unlocked&quot;,true
 		),
@@ -652,7 +652,7 @@ _________
             &quot;eventText2&quot;,&quot;A lot of patrons are asking for the library to invest in more licenses so more patrons can watch the show at the same time, and not have to wait and possibly hear spoilers. But after the finale, you&#39;ll be stuck with more licenses than you really need until the end of the fiscal year.&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .05)(set: $collectionAmountMIN to 0)(set: $collectionEnergy to it - 1)&quot;, &quot;(set: $communityMeter to it - .15)(set: $collectionAmountMIN to it + 2)(set: $collectionAmountMAX to it + 2)(set: $collectionEnergy to it + 1)&quot;),
             &quot;choicesText&quot;,(a:&quot;Get more licenses&quot;, &quot;Wait for the DVDs&quot;),
             &quot;citation&quot;,24,
             &quot;unlocked&quot;,true
@@ -663,7 +663,7 @@ _________
             &quot;eventText2&quot;,&quot;This patron might be the only person in the whole system who uses the streaming service, as you aren&#39;t certain how popular the show is. But at the same time, this patron is a frequent volunteer, donor, visitor, and adds a whimsical British flair.&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionEnergy to it - 2)](else:)[(set: $collectionStatus to it + (a:&#39;Expensive&#39;))](set: $communityMeter to it + .05)(set: $collectionAmount to it + 5)&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionEnergy to it + 1)&quot;),
             &quot;choicesText&quot;,(a:&quot;Subscribe To The Service&quot;, &quot;Rebuff With Your Current Services&quot;),
             &quot;citation&quot;,10,
             &quot;unlocked&quot;,true
@@ -674,7 +674,7 @@ _________
             &quot;eventText2&quot;,&quot;A few of the students know each other, but several don&#39;t. They don&#39;t all seem to be getting to know each other, but they share the consoles fair enough. In what way would you like to intervene?&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it + .1)(set: $collectionAmountMAX to it + 2)(set: $collectionStatus to it + (a:&#39;Teen Spirit&#39;))&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it - 5)&quot;),
             &quot;choicesText&quot;,(a:&quot;Start A Video Game Club&quot;, &quot;Leave Them To Their Own Devices&quot;),
             &quot;citation&quot;,4,
             &quot;unlocked&quot;,true
@@ -685,7 +685,7 @@ _________
             &quot;eventText2&quot;,&quot;Your patrons said they searched the database, but aren&#39;t entirely certain how to spell the name of the game or what else to even search for. You are pretty sure you don&#39;t have this one though and are going to have to be careful with your guidance.&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it + 1)(set: $communityMeter to it - .05)&quot;, &quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it + .05)(set: $collectionAmount to it + 3)&quot;),
             &quot;choicesText&quot;,(a:&quot;Suggest An Alternative Game You Have&quot;, &quot;Buy It Used Off WiiBay&quot;),
             &quot;citation&quot;,7,
             &quot;unlocked&quot;,true
@@ -696,7 +696,7 @@ _________
             &quot;eventText2&quot;,&quot;This game is currently outside your budget, but since it is an indie game, you have a good chance of requesting it directly from the developers for free. While that is normal for indie developers, you really should compensate these developers for their work. It could even be worth the extra work to form a partnership, if they make more games.&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;,&quot;&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it + 5)(set: $collectionEnergy to it + 1)&quot;, &quot;(set: $collectionAmountMAX to it + 2)&quot;,&quot;(set: $communityMeter to it + .1)(set: $collectionEnergy to it - 1)(set: $collectionAmountMIN to it + 2)(set: $collectionAmountMAX to it + 2)&quot;),
             &quot;choicesText&quot;,(a:&quot;Purchase The Game&quot;, &quot;Request The Game From The Developers&quot;,&quot;Offer A Partnership&quot;),
             &quot;citation&quot;,8,
             &quot;unlocked&quot;,true
@@ -731,6 +731,17 @@ _________
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
             &quot;choicesText&quot;,(a:&quot;Dump Stream Service&quot;, &quot;Renegotiate License&quot;),
+            &quot;citation&quot;,1,
+            &quot;unlocked&quot;,true
+		),
+        (dm:
+        	&quot;title&quot;,&quot;Uninter net&quot;,
+        	&quot;eventText1&quot;, &quot;During a long weekend, one of your coworkers clicks on a link they thought was for a library delivery.&quot;,
+            &quot;eventText2&quot;,&quot;While the delivery wasn&#39;t real, the virus sure was. Your services go down, and you&#39;re certain the library systems are getting hacked.&quot;,
+        	&quot;type&quot;,&quot;general&quot;,
+            &quot;difficulty&quot;,&quot;heavy&quot;,
+            &quot;choicesEffects&quot;,(a:&quot;(move: (either: ...$playerItems) into  _bin)(set: $communityMeter to it -.1)&quot;, &quot;(if: $collectionStatus does not contain &#39;Backed Up&#39;)[]&quot;),
+            &quot;choicesText&quot;,(a:&quot;Suggest shutting down all library services&quot;, &quot;Continue library services as normal&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
