@@ -143,12 +143,14 @@ COLLECTION GRID
 }
 
 .collection-item-wrapper{
-  width: 400px;
- padding: 20px;
+  width: 550px;
+ padding: 40px;
 border: 1px solid black;
   display: block;
    display: flex;
    align-items:center;
+  gap: 10px;
+align-items: flex-start;
 }
 
 
@@ -191,6 +193,11 @@ html.hide-footer tw-include[name="footer"] {
 	display: none;
 }
 
+.footer-item-stats{
+display: flex;
+align-items: center;
+}
+
 /*
 IMAGES
 */
@@ -213,6 +220,11 @@ background-color: white;
   font-weight: normal;
   line-height: auto;
   padding: 10px;
+}
+
+.bib-item-wrapper {
+ padding: 20px;
+border: 1px solid black;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-tag name="stats" color="yellow"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
 	(a:
     	(dm:
@@ -918,7 +930,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;send-money.png&quot;,
         ),
         (dm:&quot;name&quot;,&quot;Media Motor Machine&quot;,
             &quot;description&quot;,&quot;A vehicle the library can use to bring games to community events outside the library.&quot;,
@@ -926,7 +938,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,19,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;backpack&quot;,
+            &quot;image&quot;,&quot;toy-car.png&quot;,
 		),
         (dm:&quot;name&quot;,&quot;A New Media Librarian&quot;,
             &quot;description&quot;,&quot;New Media Librarian&quot;,
@@ -934,7 +946,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;sculpture.png&quot;,
         ),
         (dm:&quot;name&quot;,&quot;Hulflix Plus Video Subscription&quot;,
             &quot;description&quot;,&quot;this is a stream-only test item. Possibly cursed.&quot;,
@@ -942,7 +954,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;computer.png&quot;,
         ),
 		(dm:&quot;name&quot;,&quot;Used Occipital Adventure VR Headset&quot;,
     		&quot;description&quot;,&quot;this is a VR-only test item. Very Meta.&quot;,
@@ -950,7 +962,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;vr.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Super Toni&#39;s Jumping Adventure&quot;,
     		&quot;description&quot;,&quot;this is a videogame-only test item&quot;,
@@ -958,7 +970,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;mistery.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Gatari 86&quot;,
     		&quot;description&quot;,&quot;A retro console with games. It doesn&#39;t work, but it&#39;s inspiring.&quot;,
@@ -966,7 +978,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,1,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,false,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;gamepad-old.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Upgraded library database website&quot;,
     		&quot;description&quot;,&quot;A new and improved database for patrons to more easily search the library&#39;s collection online.&quot;,
@@ -974,7 +986,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,12,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;database.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Dedicated Games Space&quot;,
     		&quot;description&quot;,&quot;Gamerz only in this section! Just kidding. But it is where all the games are.&quot;,
@@ -982,7 +994,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,13,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;tv-stand.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Swintendo Nitch&quot;,
     		&quot;description&quot;,&quot;A new type of console that can be handheld or docked to a screen, and is often used for multiplayer games.&quot;,
@@ -990,7 +1002,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,14,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;gaming.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Digitization&quot;,
     		&quot;description&quot;,&quot;Instead of cartridges, you have the cloud!&quot;,
@@ -999,7 +1011,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,15,
             &quot;pool&quot;,&quot;videogames&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;cloud-network.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Treetop&quot;,
     		&quot;description&quot;,&quot;They aren&#39;t the newest movies, but you can host a much wider selection of media once more people find out.&quot;,
@@ -1007,16 +1019,16 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,16,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;film-roll.png&quot;,
 		),
-		(dm:&quot;name&quot;,&quot;PDA Trial&quot;,
-    		&quot;description&quot;,&quot;Patron Driven Acquisitions! An item was added to the library, and you can&#39;t get rid of it anymore... Oh well, it was worth it!&quot;,
+		(dm:&quot;name&quot;,&quot;Patron-Driven Acquisitions Trial&quot;,
+    		&quot;description&quot;,&quot;A patron adds this item to the library by request, and you can&#39;t get rid of it anymore... Oh well, it was worth it!&quot;,
             &quot;effect&quot;,&quot;(set: $collectionStatus to it + (a:&#39;PDA&#39;))
             	(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
             &quot;citation&quot;,17,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;like.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Streampass&quot;,
     		&quot;description&quot;,&quot;Expands your streaming collection for a brief time, but it&#39;s very expensive.&quot;,
@@ -1024,7 +1036,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,19,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;play-button.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Cardboard Virtual Reality&quot;,
     		&quot;description&quot;,&quot;Gives your library simple VR access for a fraction of the cost.&quot;,
@@ -1032,7 +1044,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,20,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;shipping-box.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Hyper Hunt VR Headset&quot;,
     		&quot;description&quot;,&quot;A mysterious benefactor is pleased with your support for VR and has gifted you an expensive Hyper Hunt headset. Because it would be too expensive to replace, the headset can only be used in the library.&quot;,
@@ -1040,7 +1052,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,21,
             &quot;pool&quot;,&quot;VR&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;vr-glasses.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Alexandra Road License&quot;,
     		&quot;description&quot;,&quot;The library system has decided to invest in a subscription license to the academic video streaming database Alexandra Road. The license restricts how many user can access the database simultaneously and requires quarterly renewels. &quot;,
@@ -1048,7 +1060,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,22,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;sticker.png&quot;,
 		),
 		(dm:&quot;name&quot;,&quot;Liber+&quot;,
     		&quot;description&quot;,&quot;A new video streaming provider has come onto the scene offering a unique subscription model with unlimited, simultaneous streaming. However, to convince the Director to invest, you&#39;ll have to cut budget for your other streaming options.&quot;,
@@ -1056,7 +1068,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
             &quot;citation&quot;,23,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
-            &quot;image&quot;,&quot;pc&quot;,
+            &quot;image&quot;,&quot;cloud.png&quot;,
 		)
 	)
 )
@@ -1212,27 +1224,34 @@ All available items:
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
 
 }</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="1100,350" size="100,100">{
+(set: _temp to $communityMeter*100)
 (link:&#39;&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
-&lt;div class=&quot;footer-content&quot;&gt;&lt;div class=&quot;footer-item&quot;&gt;
-&lt;div&gt;Collection
-&lt;span title=&quot;Your collection includes the items you\&#39;ve curated, collected, and policies that impact your library.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;
-&lt;/div&gt;
-&lt;div&gt; 
-&lt;img src=&quot;assets/case-file.png&quot;/&gt;
-&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;
+&lt;div class=&quot;footer-content&quot;&gt;
+
+&lt;div class=&quot;footer-item&quot; title=&quot;The amount of energy you have to maintain your virtual reality (VR) collection.&quot;&gt;
+&lt;div&gt;Energy&lt;/div&gt;
+&lt;div class=&quot;footer-item-stats&quot;&gt; 
+&lt;div&gt;$energy&lt;/div&gt;
+&lt;img src=&quot;assets/power-up.png&quot;/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;footer-item&quot;&gt;
-&lt;div&gt;Community 
-&lt;span title=&quot;Your community level is how much the community approves of and supports your collection.&quot; class=&quot;more-info&quot;&gt;ⓘ&lt;/span&gt;
-&lt;/div&gt;
-&lt;div&gt; 
+&lt;div class=&quot;footer-item&quot; title=&quot;The amount the community approves of and supports your collection.&quot;&gt;
+&lt;div&gt;Community&lt;/div&gt;
+&lt;div class=&quot;footer-item-stats&quot;&gt; 
+&lt;div&gt;_temp%&lt;/div&gt;
 &lt;img src=&quot;assets/theater.png&quot;/&gt;
-&lt;img src=&quot;assets/statuses/green-0.png&quot; /&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 
+&lt;div class=&quot;footer-item&quot; title=&quot;The amount of physical copies of video games in your collection.&quot;&gt;
+&lt;div&gt;Games&lt;/div&gt;
+&lt;div class=&quot;footer-item-stats&quot;&gt; 
+&lt;div&gt;$CollectionAmount&lt;/div&gt;
+&lt;img src=&quot;assets/cd.png&quot;/&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;/div&gt;&#39;)[(goto: &quot;Stats&quot;)]
 }</tw-passagedata><tw-passagedata pid="18" name="Heavy Event" tags="" position="625,725" size="100,100">{(if: $resetEventsPassage)[
 (set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
@@ -1383,29 +1402,46 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 &lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;div class=&quot;collection-header&quot;&gt;&lt;h1&gt;Stats&lt;/h1&gt;&lt;/div&gt; &lt;/div&gt;
 
 &lt;div class=&quot;stat-section&quot;&gt;
+&lt;h2&gt;&lt;img src=&quot;assets/power-up.png&quot;/&gt; Energy&lt;/h2&gt;
+&lt;p&gt;Energy level: $energy out of 10&lt;/p&gt;
+&lt;!-- &lt;p&gt;You have $collectionEnergy Energy left for your collection&lt;/p&gt; --&gt;
+&lt;!-- &lt;p&gt;You are holding on to $collectionAmount games total&lt;/p&gt; --&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div class=&quot;stat-section&quot;&gt;
 &lt;h2&gt;&lt;img src=&quot;assets/theater.png&quot;/&gt; Community&lt;/h2&gt;
 &lt;p&gt;(print: (round:$communityMeter*100))% of the community is currently behind you.&lt;/p&gt;
 &lt;!-- &lt;p&gt;You have $collectionEnergy Energy left for your collection&lt;/p&gt; --&gt;
 &lt;!-- &lt;p&gt;You are holding on to $collectionAmount games total&lt;/p&gt; --&gt;
 &lt;/div&gt;
+
 &lt;hr&gt;
 &lt;div class=&quot;stat-section&quot;&gt;
 &lt;h2&gt;&lt;img src=&quot;assets/case-file.png&quot;/&gt; Collection&lt;/h2&gt;
 &lt;p&gt;Your collection&#39;s current status is: $collectionStatus&lt;/p&gt;
+&lt;p&gt;Amount of physical video games: $CollectionAmount &lt;/p&gt;
 &lt;div class=&quot;collection-wrapper&quot;&gt;
-(for: each _item, ...$playerItems)[(if: _item is not an empty)[(print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;.png&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + _item&#39;s name + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)]]
+(for: each _item, ...$playerItems)[(if: _item is not an empty)[
+(print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + &quot;&lt;h4&gt;&quot; + _item&#39;s name + &quot;&lt;/h4&gt;&quot; + &quot;&lt;p&gt;&lt;i&gt;&quot; + _item&#39;s description + &quot;&lt;/i&gt;&lt;/p&gt;&quot; + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)
+
+]
+]
 &lt;/div&gt;
 
+&lt;/div&gt;
 
+&lt;hr&gt;
 &lt;div class=&quot;stat-section&quot;&gt;
-&lt;h2&gt;Current Bibliography&lt;/h2&gt;
-(for:each _bib where _bib&#39;s unlocked is true, ...$bib)[FOUND: (print:_bib&#39;s quote)
-&lt;p&gt;
-ABILITY: (print:_bib&#39;s effectText)
-&lt;/p&gt;
-&lt;p&gt;
-CITATION: (print:_bib&#39;s citation)
-&lt;/p&gt;
+&lt;h2&gt;Discovered bibliography entries&lt;/h2&gt;
+
+(for:each _bib where _bib&#39;s unlocked is true, ...$bib)[
+(if: _bib is not an empty)[
+
+(print: &quot;&lt;div class=&#39;bib-item-wrapper&#39;&gt;&quot; +&quot;&lt;p&gt;&quot; + _bib&#39;s quote +&quot;&lt;/p&gt;&quot; + &quot;&lt;p&gt;&quot; + _bib&#39;s citation +&quot;&lt;/p&gt;&quot; +  &quot;&lt;p&gt;&quot; + _bib&#39;s effectText +&quot;&lt;/p&gt;&quot; +  &quot;&lt;/div&gt;&quot;)
+
+]
 ]
 
 (for:each _bib where _bib&#39;s unlocked is false, ...$bib)[
@@ -1413,10 +1449,43 @@ CITATION: (print:_bib&#39;s citation)
 LOCKED: (print:_bib&#39;s unlockText)
 &lt;/p&gt;
 ]
-&lt;/div&gt;
+
+&lt;h3&gt;Icons used&lt;/h3&gt;
+“Backpack Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/backpack_5635979. Accessed 30 Nov. 2024. &lt;br&gt;
+“Case File Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/case-file_8131991. Accessed 30 Nov. 2024.&lt;br&gt;
+“Cd Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/cd_7760529. Accessed 30 Nov. 2024.&lt;br&gt;
+“Cloud Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/cloud_8777537. Accessed 30 Nov. 2024.&lt;br&gt;
+“Cloud Network Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/cloud-network_8777535. Accessed 30 Nov. 2024.&lt;br&gt;
+“Computer Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/computer_7930052. Accessed 30 Nov. 2024.&lt;br&gt;
+“Database Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/database_4937143. Accessed 30 Nov. 2024.&lt;br&gt;
+“Film Roll Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/film-roll_7760478. Accessed 30 Nov. 2024.&lt;br&gt;
+“Folder Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/folder_8671815. Accessed 30 Nov. 2024.&lt;br&gt;
+“Gamepad Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/gamepad_2865532. Accessed 30 Nov. 2024.&lt;br&gt;
+“Gamepad Free Icons Designed by Freepik, Renamed as ‘Gamepad-Old.’” Flaticon, https://www.flaticon.com/free-icon/gamepad_7747843. Accessed 30 Nov. 2024.&lt;br&gt;
+“Gaming Console Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/gaming-console_7760481. Accessed 30 Nov. 2024.&lt;br&gt;
+“Gaming Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/gaming_7760513. Accessed 30 Nov. 2024.&lt;br&gt;
+“Happy Mask Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/happy-mask_5692568. Accessed 30 Nov. 2024.&lt;br&gt;
+“Like Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/like_5202024. Accessed 30 Nov. 2024.&lt;br&gt;
+“Medal Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/medal_5635920. Accessed 30 Nov. 2024.&lt;br&gt;
+“Mistery Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/mistery_5979436. Accessed 30 Nov. 2024.&lt;br&gt;
+“Pc Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/pc_7760533. Accessed 30 Nov. 2024.&lt;br&gt;
+“Play Button Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/play-button_7930016. Accessed 30 Nov. 2024.&lt;br&gt;
+“Power Up Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/power-up_5979673. Accessed 30 Nov. 2024.&lt;br&gt;
+“Remote Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/remote_7184928. Accessed 30 Nov. 2024.&lt;br&gt;
+“Send Money Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/send-money_7189365. Accessed 30 Nov. 2024.&lt;br&gt;
+“Shipping Box Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/shipping-box_6110093. Accessed 30 Nov. 2024.&lt;br&gt;
+&quot;Sticker - Free Miscellaneous Icons.&quot; Flaticon, https://www.flaticon.com/free-icon/sticker_8132833. Accessed 30 Nov. 2024.&lt;br&gt;
+“Theater Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/theater_5692539. Accessed 30 Nov. 2024.&lt;br&gt;
+“Toy Car Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/toy-car_7760540. Accessed 30 Nov. 2024.&lt;br&gt;
+“Tragedy Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/tragedy_5692537. Accessed 30 Nov. 2024.&lt;br&gt;
+“TV Stand Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/tv-stand_8580947. Accessed 30 Nov. 2024.&lt;br&gt;
+“Vr Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/vr_5815870. Accessed 30 Nov. 2024.&lt;br&gt;
+“Vr Glasses Free Icons Designed by Freepik.” Flaticon, https://www.flaticon.com/free-icon/vr-glasses_7747859. Accessed 30 Nov. 2024.&lt;br&gt;
 
 
 &lt;/div&gt;
+
+
 
 &lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
