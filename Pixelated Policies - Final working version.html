@@ -113,9 +113,7 @@ tw-link {color:white;}
   }
 }
 
-tw-hook:hover {
-color: white;
-}
+
 
  
 /*
@@ -1140,7 +1138,7 @@ EXAMPLE:
     (set: $choice to _itemOption)
     (go-to: &quot;Update item code&quot;)
     ]
-     |bib&gt;[(link:&quot;^^`[`&quot;+(str:_itemOption&#39;s citation)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: _itemOption&#39;s citation)]]
+     |bib&gt;[(link:&quot;&lt;span title=&#39;Select to read the quote that inspired this item.&#39;&gt;^^`[`&quot;+(str:_itemOption&#39;s citation)+&quot;`]`^^&lt;/span&gt;&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: _itemOption&#39;s citation)]]
     &lt;/div&gt;
     ]
     
@@ -1173,7 +1171,7 @@ EXAMPLE:
 
 &lt;h3&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
 
-     |bib&gt;[(link:&quot;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
+     |bib&gt;[(link:&quot;&lt;span title=&#39;Select to read the quote that inspired this event.&#39;&gt;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&lt;/span&gt;&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
 
 &lt;/h3&gt;
 
@@ -1270,7 +1268,7 @@ All available items:
 
 &lt;h3&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
 
-     |bib&gt;[(link:&quot;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
+     |bib&gt;[(link:&quot;&lt;span title=&#39;Select to read the quote that inspired this event.&#39;&gt;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&lt;/span&gt;&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
 
 &lt;/h3&gt;
 
@@ -1306,7 +1304,7 @@ All available items:
 
 &lt;h3&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
 
-     |bib&gt;[(link:&quot;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
+     |bib&gt;[(link:&quot;&lt;span title=&#39;Select to read the quote that inspired this event.&#39;&gt;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&lt;/span&gt;&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
 
 &lt;/h3&gt;
 &lt;br&gt;
