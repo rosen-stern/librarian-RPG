@@ -60,7 +60,7 @@ min-width: unset;
 }
 
 .content{
-
+width: 75%;
 }
 
 h2{
@@ -75,7 +75,8 @@ CHOICES
 
 .choice{
   display: flex;
-  flex-flow: column;  
+  flex-flow: column;
+  width: 25%;
 
   /*
   min-width: 45%;
@@ -94,7 +95,7 @@ CHOICES
       padding: 10px;
       display: block;
       width: max-content;
-     max-width: 100%;
+     max-width: 350px;
 	}
  
   .choice-item:before{
@@ -107,8 +108,13 @@ CHOICES
 
 tw-link {color:white;}
   tw-link:hover {
+    color: white;
     text-decoration: var(--white) wavy underline;
   }
+}
+
+tw-hook:hover {
+color: white;
 }
 
  
