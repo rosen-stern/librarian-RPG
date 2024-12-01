@@ -548,7 +548,7 @@ _________
             	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &#39;videogames&#39;, ...$items))]
                 (set: $playerItems to it + (a:$items&#39;s 8th))
                 (set: $communityMeter to it + 0.05)&quot;, &quot;(set: $communityMeter to it - 0.05)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Accept The Console&quot;, &quot;Return The Console&quot;),
+            &quot;choicesText&quot;,(a:&quot;Accept the console&quot;, &quot;Return it&quot;),
             &quot;citation&quot;,3,
             &quot;unlocked&quot;,true
 		),
@@ -559,7 +559,7 @@ _________
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(move: (either: ...$playerItems) into  _bin)&quot;, &quot;(if: $collectionStatus contains &#39;Young&#39;)[(set: $collectionStatus to it - &#39;Young&#39;)(set: $collectionStatus to it + &#39;Old&#39;)]&quot;),
-            &quot;choicesText&quot;,(a: &quot;Clear Out The Materials&quot;, &quot;Keep Them Just In Case&quot;),
+            &quot;choicesText&quot;,(a: &quot;Clear out the materials&quot;, &quot;Keep them just in case&quot;),
             &quot;citation&quot;,9,
             &quot;unlocked&quot;,true
 		),
@@ -570,7 +570,7 @@ _________
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $playerItems to it - $playerItems&#39;s (random:1,$playerItems&#39;s length)(set: $collectionEnergy to it + 1)&quot;, &quot;(set: $communityMeter to it + .05)(for: each _item, ...$playerItems)[(set: $playerItems&#39;s _item&#39;s name to &#39;????&#39;)(set: $playerItems&#39;s _item&#39;s description to (reversed: ...(words: $playerItems&#39;s _item&#39;s description)))]&quot;),
-            &quot;choicesText&quot;,(a: &quot;Attend the Seminar&quot;, &quot;Hope It&#39;s Recorded&quot;),
+            &quot;choicesText&quot;,(a: &quot;Attend the seminar&quot;, &quot;Hope it&#39;s recorded&quot;),
             &quot;citation&quot;,11,
             &quot;unlocked&quot;,true
 		),
@@ -581,7 +581,7 @@ _________
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it + 1)(set: $communityMeter to it - .1)(set: $collectionAmountMIN to it - 2)&quot;, &quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it - .2)(set: $collectionAmountMAX to it + 2)&quot;),
-            &quot;choicesText&quot;,(a: &quot;Shoosh The New Patrons&quot;, &quot;Let There Be (Some) Noise&quot;),
+            &quot;choicesText&quot;,(a: &quot;Shoosh the new patrons&quot;, &quot;Let there be (some) noise&quot;),
             &quot;citation&quot;,5,
             &quot;unlocked&quot;,true
 		),
@@ -603,7 +603,7 @@ _________
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it / 2)(set: $communityMeter to it + .05)(set: $collectionAmountMIN to it + 1)(set: $collectionAmountMAX to it + 2)&quot;, &quot;(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Fix It&quot;, &quot;Chuck It&quot;),
+            &quot;choicesText&quot;,(a:&quot;Fix it&quot;, &quot;Chuck it&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -625,7 +625,7 @@ _________
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .15)&quot;, &quot;(set: $collectionEnergy to it - 2)&quot;, &quot;(set: $communityMeter to it + .05)(set: $collectionEnergy to it - 1)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Secure The Equipment&quot;, &quot;Talk It Out&quot;, &quot;Secure The Children&quot;),
+            &quot;choicesText&quot;,(a:&quot;Secure the equipment&quot;, &quot;Talk it out&quot;, &quot;Secure the children&quot;),
             &quot;citation&quot;,6,
             &quot;unlocked&quot;,true
 		),
@@ -636,7 +636,7 @@ _________
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Build a Bridge&quot;, &quot;Wait and See&quot;),
+            &quot;choicesText&quot;,(a:&quot;Build a bridge&quot;, &quot;Wait and see&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -647,7 +647,7 @@ _________
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Update Website&quot;, &quot;Email Users&quot;),
+            &quot;choicesText&quot;,(a:&quot;Update website&quot;, &quot;Email users&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -680,7 +680,7 @@ _________
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionEnergy to it - 2)](else:)[(set: $collectionStatus to it + (a:&#39;Expensive&#39;))](set: $communityMeter to it + .05)(set: $collectionAmount to it + 5)&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionEnergy to it + 1)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Subscribe To The Service&quot;, &quot;Rebuff With Your Current Services&quot;),
+            &quot;choicesText&quot;,(a:&quot;Subscribe to the service&quot;, &quot;Mention services you already have&quot;),
             &quot;citation&quot;,10,
             &quot;unlocked&quot;,true
 		),
@@ -691,7 +691,7 @@ _________
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it + .1)(set: $collectionAmountMAX to it + 2)(set: $collectionStatus to it + (a:&#39;Teen Spirit&#39;))&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it - 5)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Start A Video Game Club&quot;, &quot;Leave Them To Their Own Devices&quot;),
+            &quot;choicesText&quot;,(a:&quot;Start a video game club&quot;, &quot;Leave them to their own devices&quot;),
             &quot;citation&quot;,4,
             &quot;unlocked&quot;,true
 		),
@@ -702,18 +702,18 @@ _________
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it + 1)(set: $communityMeter to it - .05)&quot;, &quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it + .05)(set: $collectionAmount to it + 3)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Suggest An Alternative Game You Have&quot;, &quot;Buy It Used Off WiiBay&quot;),
+            &quot;choicesText&quot;,(a:&quot;Suggest an alternative game you have&quot;, &quot;Buy it used off WiiBay&quot;),
             &quot;citation&quot;,7,
             &quot;unlocked&quot;,true
 		),
         (dm:
         	&quot;title&quot;,&quot;Indie-genous Representation&quot;,
         	&quot;eventText1&quot;, &quot;You&#39;ve heard from a few patrons about a new indigenous independently made video game (&#39;indie game&#39;) coming out soon. The patrons who have told you about it are also indigenous and are anticipating the release.&quot;,
-            &quot;eventText2&quot;,&quot;This game is currently outside your budget, but since it is an indie game, you have a good chance of requesting it directly from the developers for free. While that is normal for indie developers, you really should compensate these developers for their work. It could even be worth the extra work to form a partnership, if they make more games.&quot;,
+            &quot;eventText2&quot;,&quot;This game is currently outside your budget, but since it is an indie game, you have a good chance of requesting it directly from the developers for free. While that is normal for indie developers, you really should compensate these developers for their work. It could even be worth the extra work to form a partnership to get any games they make in the future.&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
             &quot;choicesEffects&quot;,(a:&quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it + 5)(set: $collectionEnergy to it + 1)&quot;, &quot;(set: $collectionAmountMAX to it + 2)&quot;,&quot;(set: $communityMeter to it + .1)(set: $collectionEnergy to it - 1)(set: $collectionAmountMIN to it + 2)(set: $collectionAmountMAX to it + 2)&quot;),
-            &quot;choicesText&quot;,(a:&quot;Purchase The Game&quot;, &quot;Request The Game From The Developers&quot;,&quot;Offer A Partnership&quot;),
+            &quot;choicesText&quot;,(a:&quot;Purchase the game&quot;, &quot;Request it from the developers&quot;,&quot;Offer a partnership&quot;),
             &quot;citation&quot;,8,
             &quot;unlocked&quot;,true
 		),
@@ -724,7 +724,7 @@ _________
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Smile and Nod&quot;, &quot;Nod and Smile&quot;),
+            &quot;choicesText&quot;,(a:&quot;Smile and nod&quot;, &quot;Nod and smile&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -735,7 +735,7 @@ _________
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Tell a few Jokes&quot;, &quot;Send flowers to victims&quot;),
+            &quot;choicesText&quot;,(a:&quot;Tell a few jokes&quot;, &quot;Send flowers to victims&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -746,7 +746,7 @@ _________
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Dump Stream Service&quot;, &quot;Renegotiate License&quot;),
+            &quot;choicesText&quot;,(a:&quot;Dump stream service&quot;, &quot;Renegotiate license&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -779,7 +779,7 @@ _________
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Replace Game&quot;, &quot;Re-evaluate Genre Selections&quot;),
+            &quot;choicesText&quot;,(a:&quot;Replace game&quot;, &quot;Re-evaluate genre selections&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -790,7 +790,7 @@ _________
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Last Hurrah Event&quot;, &quot;Sell It All&quot;),
+            &quot;choicesText&quot;,(a:&quot;Last hurrah event&quot;, &quot;Sell it all&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -801,7 +801,7 @@ _________
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Go Your Own Way&quot;, &quot;Rally State Libraries&quot;),
+            &quot;choicesText&quot;,(a:&quot;Go your own way&quot;, &quot;Rally state libraries&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		),
@@ -812,7 +812,7 @@ _________
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;final&quot;,
             &quot;choicesEffects&quot;,(a:&quot;&quot;, &quot;&quot;),
-            &quot;choicesText&quot;,(a:&quot;Leave The Library&quot;, &quot;Keep Changing The World&quot;),
+            &quot;choicesText&quot;,(a:&quot;Leave the library&quot;, &quot;Keep changing the world&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
 		)
