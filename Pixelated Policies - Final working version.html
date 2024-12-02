@@ -477,13 +477,14 @@ _________
 
 &quot;This is a cited quote&quot;(link:&quot;^^`[2]`^^&quot;)[(print:&quot; &quot;+$bib&#39;s 2nd&#39;s citation)]</tw-passagedata><tw-passagedata pid="4" name="Items (old)" tags="" position="75,350" size="100,100">{(set: $gen_items to 
 	(a:
-		(dm:&quot;name&quot;,&quot;test item&#39;s name&quot;,
-    		&quot;description&quot;,&quot;this is a test item&#39;s description&quot;,
-            &quot;effect&quot;,&quot;player&#39;s health += 2&quot;,
-            &quot;quote&quot;,&quot;this is a quote from the test item&#39;s citation&quot;,
-            &quot;citation&quot;,($bib&#39;s 1st&#39;s citation),
-            &quot;unlocked&quot;,true
-		),
+		(dm:&quot;name&quot;,&quot;Technology Grant For More Items&quot;,
+            &quot;description&quot;,&quot;More items every turn!&quot;,
+            &quot;effect&quot;,&quot;(set: $aTest to 1)(set: $bTest to 2)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $NumberOfChoices to it + 1)&#39;)&quot;,
+            &quot;citation&quot;,2,
+            &quot;pool&quot;,&quot;general&quot;,
+            &quot;unlocked&quot;,true,
+            &quot;image&quot;,&quot;send-money.png&quot;,
+        ),
 		(dm:&quot;name&quot;,&quot;test item 2&quot;,
     		&quot;description&quot;,&quot;this is a second test item&quot;,
             &quot;effect&quot;,&quot;player&#39;s health += 4&quot;,
@@ -569,7 +570,7 @@ _________
             &quot;eventText2&quot;,&quot;However, the library is low-staffed on the day of the seminar and your manager would prefer you stay to help out.&quot;,
         	&quot;type&quot;,&quot;general&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;(set: $playerItems to it - $playerItems&#39;s (random:1,$playerItems&#39;s length)(set: $collectionEnergy to it + 1)&quot;, &quot;(set: $communityMeter to it + .05)(for: each _item, ...$playerItems)[(set: $playerItems&#39;s _item&#39;s name to &#39;????&#39;)(set: $playerItems&#39;s _item&#39;s description to (reversed: ...(words: $playerItems&#39;s _item&#39;s description)))]&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $playerItems to it - (a:$playerItems&#39;s (random:1,$playerItems&#39;s length))(set: $collectionEnergy to it + 1)&quot;, &quot;(set: $communityMeter to it + .05)(for: each _item, ...(range:1,$playerItems&#39;s length))[(if: $playerItems&#39;s _item contains &#39;name&#39;)[(set: $playerItems&#39;s _item&#39;s name to &#39;????&#39;)(set: $playerItems&#39;s _item&#39;s description to (joined:&#39; &#39;, ...(reversed: ...(words: $playerItems&#39;s _item&#39;s description))))]]&quot;),
             &quot;choicesText&quot;,(a: &quot;Attend the seminar&quot;, &quot;Hope it&#39;s recorded&quot;),
             &quot;citation&quot;,11,
             &quot;unlocked&quot;,true
@@ -837,6 +838,7 @@ _________
         &quot;amount&quot;,2,
         &quot;token&quot;,&quot;@&quot;,
         &quot;status&quot;,(a:&quot;Young&quot;,&quot;Licensed&quot;,&quot;Tenuous&quot;),
+        &quot;goal&quot;,&quot;build up your Community Support&quot;,
         &quot;unlocked&quot;,true
         ),
         (dm:&quot;type&quot;,&quot;VR&quot;,
@@ -844,13 +846,15 @@ _________
         &quot;amount&quot;,1,
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,(a:&quot;Young&quot;, &quot;Cutting Edge&quot;,&quot;Technical&quot;),
+        &quot;goal&quot;,&quot;not allow your Energy Meter to reach Zero&quot;,
         &quot;unlocked&quot;,true
         ),
         (dm:&quot;type&quot;,&quot;videogames&quot;,
-        &quot;name&quot;,&quot;Videogames&quot;,
+        &quot;name&quot;,&quot;Video Games&quot;,
         &quot;amount&quot;,2,
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,(a:&quot;Young&quot;, &quot;Fun&quot;,&quot;Frivolous&quot;),
+        &quot;goal&quot;,&quot;grow your Games Collection as much as possible&quot;,
         &quot;unlocked&quot;,true
         ),
         (dm:&quot;type&quot;,&quot;Magazines&quot;,
@@ -858,6 +862,7 @@ _________
         &quot;amount&quot;,2,
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,(a:&quot;Young&quot;, &quot;Chill Licenses&quot;,&quot;Easy&quot;),
+        &quot;goal&quot;,&quot;build a Magazine Castle&quot;,
         &quot;unlocked&quot;,false
         )
 	)
@@ -901,18 +906,21 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 (set: $playerCollection to 1st of (find: _coll where _coll&#39;s name is $LastCollectionChoice, ...$collections))
 (set: $unlockedCollections to it - (a:$LastCollectionChoice))
 (set: $collectionStatus to $playerCollection&#39;s status)
-(set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is &quot;general&quot;, ...$items)+(find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is $playerCollection&#39;s type, ...$items))
+(set: $playerAvailableItems to (find: _itemPool where _itemPool&#39;s unlocked is true and _itemPool&#39;s pool is in (a:&quot;general&quot;,$playerCollection&#39;s type), ...$items))
 (set: $eventsUsed to (a:))
 (set: $resetItemsPassage to true)
 (set: $resetEventsPassage to true)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-
 &lt;p&gt;Your new $LastCollectionChoice collection will be a great asset to your library, but you&#39;ll have to make some difficult decisions to develop it to its full potential.&lt;/p&gt;
 
 &lt;p&gt;In just a few months, the &lt;b&gt;Library Director&lt;/b&gt; will be in town to determine if the collection has met their standards. If &lt;u&gt;the collection is large enough&lt;/u&gt; and if &lt;u&gt;the community supports it&lt;/u&gt;, you&#39;ll be funded again next year. You can see your statistics at any time by selecting Collection or Community at the bottom of any page.&lt;/p&gt;
 
+&lt;p&gt;Because you have chosen to begin a $LastCollectionChoice collection, the &lt;b&gt;Library Director&lt;/b&gt; will be expecting you to &lt;b&gt;(print:(find: _col where _col&#39;s name is $LastCollectionChoice, ...$collections)&#39;s 1st&#39;s goal).&lt;/b&gt; They will be checking on your stats to make sure you are maintaining yourself properly during this test.
+&lt;br&gt;
+
+You have  (display:&quot;timeDance&quot;) left to go...
 &lt;p&gt;Good luck!&lt;/p&gt;
 
 &lt;/div&gt;
@@ -930,7 +938,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 	(a:
         (dm:&quot;name&quot;,&quot;Technology Grant For More Items&quot;,
             &quot;description&quot;,&quot;More items every turn!&quot;,
-            &quot;effect&quot;,&quot;(set: $aTest to 1)(set: $bTest to 2)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $NumberOfChoices to it + 1)&#39;)&quot;,
+            &quot;effect&quot;,&quot;(set: $NumberOfChoices to 3)(set: $playerItems&#39;s last&#39;s effect to &#39;none&#39;)&quot;,
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
@@ -1028,7 +1036,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 		(dm:&quot;name&quot;,&quot;Patron-Driven Acquisitions Trial&quot;,
     		&quot;description&quot;,&quot;A patron adds this item to the library by request, and you can&#39;t get rid of it anymore... Oh well, it was worth it!&quot;,
             &quot;effect&quot;,&quot;(set: $collectionStatus to it + (a:&#39;PDA&#39;))
-            	(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
+            	(set: $playerItems&#39;s last&#39;s effect to &#39;none&#39;)&quot;,
             &quot;citation&quot;,17,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
@@ -1134,7 +1142,7 @@ EXAMPLE:
 &lt;div class=&quot;choice&quot;&gt;
     (for: each _itemOption, ...$itemOptions)[
     &lt;div class=&quot;choice-item&quot;&gt;
-    (link:  _itemOption&#39;s name)[
+    (link: &quot;&lt;span title=&#39;&quot;+ (str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,_itemOption&#39;s effect)) +&quot;&#39;&gt;&quot;+ _itemOption&#39;s name+&quot;&lt;/span&gt;&quot;)[
     (set: $choice to _itemOption)
     (go-to: &quot;Update item code&quot;)
     ]
@@ -1168,7 +1176,6 @@ EXAMPLE:
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
-
 &lt;h3&gt;(print: $chosenEvent&#39;s title + &quot; &quot;)
 
      |bib&gt;[(link:&quot;&lt;span title=&#39;Select to read the quote that inspired this event.&#39;&gt;^^`[`&quot;+(str: $biblink)+&quot;`]`^^&lt;/span&gt;&quot;)[(link:&quot;^^`[`Return`]`  ^^&quot;)[(rerun:?bib)]($showQuote: $biblink)](set: $bib&#39;s $biblink&#39;s unlocked to true)]
@@ -1184,11 +1191,16 @@ EXAMPLE:
 
 &lt;div class=&quot;choice&quot;&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Let&#39;s Begin!&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 1st))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 1st+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
 &lt;/div&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Let&#39;s Begin!&quot;)[(set: $chosenEventsEffect to 2)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 2nd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 2nd+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
 &lt;/div&gt;
+(if: $chosenEvent&#39;s choicesText&#39;s length is 3)[
+&lt;div class=&quot;choice-item&quot;&gt;
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 3rd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 3rd+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 3rd)]
+&lt;/div&gt;
+]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1197,7 +1209,15 @@ EXAMPLE:
     	(print: _i&#39;s effect)
     ]
 ]
-}</tw-passagedata><tw-passagedata pid="14" name="timeDance" tags="" position="75,550" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="15" name="good test code" tags="" position="75,450" size="100,100">________________________________________________________
+(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
+}
+
+
+
+
+
+
+</tw-passagedata><tw-passagedata pid="14" name="timeDance" tags="" position="75,550" size="100,100">(text-style:&quot;blur&quot;)[(font:&quot;Courier&quot;)[(live: 0.04s)[(random:0,9)] (live: 0.07s)[(either: &quot;Ｓｅｃｏｎｄｓ&quot;, &quot;Ｍｉｎｕｔｅｓ&quot;, &quot;Ｈｏｕｒｓ　　&quot;, &quot;Ｄａｙｓ　　　&quot;, &quot;Ｗｅｅｋｓ　　&quot;, &quot;Ｍｏｎｔｈｓ　&quot;, &quot;Ｙｅａｒｓ　　&quot;, &quot;Ｄｅｃａｄｅｓ&quot;, &quot;Ｔｉｍｅ　　　&quot;)]]]</tw-passagedata><tw-passagedata pid="15" name="good test code" tags="" position="75,450" size="100,100">________________________________________________________
 --Test Code--
 
 All available items:
@@ -1241,7 +1261,7 @@ All available items:
 &lt;div class=&quot;footer-item&quot; title=&quot;The amount of energy you have to maintain your virtual reality (VR) collection.&quot;&gt;
 &lt;div&gt;Energy&lt;/div&gt;
 &lt;div class=&quot;footer-item-stats&quot;&gt; 
-&lt;div&gt;$energy&lt;/div&gt;
+&lt;div&gt;$collectionEnergy&lt;/div&gt;
 &lt;img src=&quot;assets/power-up.png&quot;/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1257,7 +1277,7 @@ All available items:
 &lt;div class=&quot;footer-item&quot; title=&quot;The amount of physical copies of video games in your collection.&quot;&gt;
 &lt;div&gt;Games&lt;/div&gt;
 &lt;div class=&quot;footer-item-stats&quot;&gt; 
-&lt;div&gt;$CollectionAmount&lt;/div&gt;
+&lt;div&gt;$collectionCount&lt;/div&gt;
 &lt;img src=&quot;assets/cd.png&quot;/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1287,11 +1307,16 @@ All available items:
 
 &lt;div class=&quot;choice&quot;&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Let&#39;s Begin!&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 1st))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 1st+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
 &lt;/div&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Let&#39;s Begin!&quot;)[(set: $chosenEventsEffect to 2)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 2nd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 2nd+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
 &lt;/div&gt;
+(if: $chosenEvent&#39;s choicesText&#39;s length is 3)[
+&lt;div class=&quot;choice-item&quot;&gt;
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 3rd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 3rd+&quot;&lt;/span&gt;&quot; , &quot;Let&#39;s Begin!&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 3rd)]
+&lt;/div&gt;
+]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1300,6 +1325,7 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
+(set: $collectionAmount to it + (random:$collectionAmountMIN,$collectionAmountMAX))
 }</tw-passagedata><tw-passagedata pid="19" name="Final Event" tags="" position="750,725" size="100,100">{(if: $resetEventsPassage)[
 (set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
 (set: $biblink to $chosenEvent&#39;s citation)
@@ -1322,11 +1348,16 @@ All available items:
 
 &lt;div class=&quot;choice&quot;&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 1st , &quot;Resolution&quot;)[(set: $chosenEventsEffect to 1)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 1st))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 1st+&quot;&lt;/span&gt;&quot; , &quot;Resolution&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 1st)]
 &lt;/div&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-(link-reveal-goto: $chosenEvent&#39;s choicesText&#39;s 2nd, &quot;Resolution&quot;)[(set: $chosenEventsEffect to 2)]
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 2nd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 2nd+&quot;&lt;/span&gt;&quot; , &quot;Resolution&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 2nd)]
 &lt;/div&gt;
+(if: $chosenEvent&#39;s choicesText&#39;s length is 3)[
+&lt;div class=&quot;choice-item&quot;&gt;
+(link-reveal-goto: &quot;&lt;span title=&#39;&quot;+(str-replaced: &#39;\&#39;&#39;, &#39;&#39;, (str-replaced: &#39;:&#39;,&#39;&#39;,$chosenEvent&#39;s choicesEffects&#39;s 3rd))+&quot;&#39;&gt;&quot;+$chosenEvent&#39;s choicesText&#39;s 3rd+&quot;&lt;/span&gt;&quot; , &quot;Resolution&quot;)[(print: $chosenEvent&#39;s choicesEffects&#39;s 3rd)]
+&lt;/div&gt;
+]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1335,6 +1366,7 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
+(set: $collectionAmount to it + (random:$collectionAmountMIN,$collectionAmountMAX))
 }</tw-passagedata><tw-passagedata pid="20" name="Resolution" tags="" position="725,875" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -1349,8 +1381,7 @@ I haven&#39;t been keeping track (yet)
 
 
 &lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">{
-&lt;div class=&quot;body&quot;&gt;
+}</tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">{&lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 Play again? 
 
@@ -1358,7 +1389,7 @@ Play again?
 &lt;div class=&quot;choice&quot;&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
 [[Choose Your Starting Collection]] 
-&lt;/div&gt;
+&lt;/div&gt;}
 
 &lt;!--Reset all global variables except All Unlocks--&gt;
 {(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
@@ -1413,7 +1444,7 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 
 &lt;div class=&quot;stat-section&quot;&gt;
 &lt;h2&gt;&lt;img src=&quot;assets/power-up.png&quot;/&gt; Energy&lt;/h2&gt;
-&lt;p&gt;Energy level: $energy out of 10&lt;/p&gt;
+&lt;p&gt;Energy level: $collectionEnergy out of 10&lt;/p&gt;
 &lt;!-- &lt;p&gt;You have $collectionEnergy Energy left for your collection&lt;/p&gt; --&gt;
 &lt;!-- &lt;p&gt;You are holding on to $collectionAmount games total&lt;/p&gt; --&gt;
 &lt;/div&gt;
@@ -1431,7 +1462,7 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 &lt;div class=&quot;stat-section&quot;&gt;
 &lt;h2&gt;&lt;img src=&quot;assets/case-file.png&quot;/&gt; Collection&lt;/h2&gt;
 &lt;p&gt;Your collection&#39;s current status is: $collectionStatus&lt;/p&gt;
-&lt;p&gt;Amount of physical video games: $CollectionAmount &lt;/p&gt;
+&lt;p&gt;Amount of physical video games: $collectionAmount &lt;/p&gt;
 &lt;div class=&quot;collection-wrapper&quot;&gt;
 (for: each _item, ...$playerItems)[(if: _item is not an empty)[
 (print: &quot;&lt;div class=&#39;collection-item-wrapper&#39;&gt;&lt;img src=&#39;assets/&quot;+ _item&#39;s image +&quot;&#39;/&gt; &lt;div class=&#39;collection-item-content&#39;&gt;&quot; + &quot;&lt;h4&gt;&quot; + _item&#39;s name + &quot;&lt;/h4&gt;&quot; + &quot;&lt;p&gt;&lt;i&gt;&quot; + _item&#39;s description + &quot;&lt;/i&gt;&lt;/p&gt;&quot; + &quot;&lt;/div&gt;&lt;/div&gt;&quot;)
@@ -1530,15 +1561,13 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 
 	(if: $choice is not &quot;New collection&quot;)[
     
-    	(set: _l to $playerItems&#39;s length + 1)
+    	&lt;!--(set: $l to $playerItems&#39;s length + 1)
         
-        (if: $playerItems&#39;s 1 is an empty)[(set: _l to 1)]
+        (if: $playerItems&#39;s 1 is an empty)[(set: $l to 1)]--&gt;
+        (set: $itemOptions to it - (a:$choice))
+    	(set: $playerAvailableItems to it + $itemOptions)
+        (set: $playerItems to it + (a:$choice))
         
-    	(move: $choice into $playerItems&#39;s _l)
-        
-        (set: $playerAvailableItems to it + $itemOptions)
-        
-        (print: $playerItems&#39;s last&#39;s effect)
         
 	](else:)[
     	(set: $unlockedCollections to it - (a:$LastCollectionChoice))
