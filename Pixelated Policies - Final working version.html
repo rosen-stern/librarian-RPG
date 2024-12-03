@@ -244,6 +244,35 @@ background-color: white;
 border: 1px solid black;
 }
 
+/* ANIMATED ELLIPSES 
+https://twinery.org/forum/discussion/8378/how-to-code-an-animated-ellipsis-in-twine
+*/
+tw-hook[name="ellipsis"] {
+  font-size: 30px;
+}
+
+tw-hook[name="ellipsis"]:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
 
 /* MOBILE FRIENDLY */
 
@@ -276,7 +305,6 @@ border: 1px solid black;
   .footer-content{
   gap: 25px;
   }
-  
  
   
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-tag name="stats" color="yellow"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
@@ -971,6 +999,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 (if: $difficulty is &quot;Hard&quot;)[(set: $roundLengths to 13)(set: $difficultyMultiplier to 1.3)]
 (if: $difficulty is &quot;Easily Hard&quot;)[(set: $roundLengths to 7)(set: $difficultyMultiplier to 1.5)]
 (if: $difficulty is &quot;Hardly Easy&quot;)[(set: $roundLengths to 16)(set: $difficultyMultiplier to 2)]
+(set: _timeLeft to $roundLengths - $level)
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
@@ -981,7 +1010,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 &lt;p&gt;Because you have chosen to begin a $LastCollectionChoice collection, the &lt;b&gt;Library Director&lt;/b&gt; will be expecting you to &lt;b&gt;(print:(find: _col where _col&#39;s name is $LastCollectionChoice, ...$collections)&#39;s 1st&#39;s goal).&lt;/b&gt; They will be checking on your stats to make sure you are maintaining yourself properly during this test.
 &lt;br&gt;
 
-You have  (display:&quot;timeDance&quot;) left to go...
+You have _timeLeft months until the Library Director |ellipsis&gt;[arrives]
 &lt;p&gt;Good luck!&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1192,10 +1221,11 @@ EXAMPLE:
  	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
   ]
 ](set: $resetItemsPassage to false)(set: $resetEventsPassage to true)
+(set: _timeLeft to ($roundLengths - $level)+1)
 
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;h3&gt;Choose a new item&lt;/h3&gt;
+&lt;h3&gt;(if: _timeLeft &gt; 1)[_timeLeft months until the Library Director visits!](else-if: _timeLeft is 1)[The Library Director arrives next month!](else:)[The Library Director is almost here!]&lt;/h3&gt;
 &lt;p&gt;With a new month comes new additions to your library.&lt;/p&gt; 
 &lt;p&gt;Choose an item or start a new collection.&lt;/p&gt;
 &lt;/div&gt;
@@ -1526,6 +1556,9 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 &lt;div class=&quot;content&quot;&gt;
 
 &lt;div class=&quot;collection-header-wrapper&quot;&gt; &lt;div class=&quot;collection-header&quot;&gt;&lt;h1&gt;Stats&lt;/h1&gt;&lt;/div&gt; &lt;/div&gt;
+(set: _timeLeft to ($roundLengths - $level)+1)
+&lt;p&gt;(if: _timeLeft &gt; 1)[_timeLeft months until the Library Director visits!](else-if: _timeLeft is 1)[The Library Director arrives next month!](else:)[The Library Director is almost here!]&lt;/p&gt;
+
 
 &lt;div class=&quot;stat-section&quot;&gt;
 &lt;h2&gt;&lt;img src=&quot;assets/power-up.png&quot;/&gt; Energy&lt;/h2&gt;
