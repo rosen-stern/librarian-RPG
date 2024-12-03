@@ -29,6 +29,10 @@ width: 100%;
   font-size: 1vw;
 }
 
+  tw-sidebar {
+  display: none;
+  }
+
 tw-story {
 background-color: var(--white);
   color: black;
@@ -220,7 +224,11 @@ IMAGES
 */
 
 img {
-max-width: 75px;
+max-width: 3vw;
+  &.profile-pic {
+  max-width: 5vw;
+  }
+  
 }
 
 
@@ -248,7 +256,7 @@ border: 1px solid black;
 https://twinery.org/forum/discussion/8378/how-to-code-an-animated-ellipsis-in-twine
 */
 tw-hook[name="ellipsis"] {
-  font-size: 30px;
+  
 }
 
 tw-hook[name="ellipsis"]:after {
@@ -305,6 +313,7 @@ tw-hook[name="ellipsis"]:after {
   .footer-content{
   gap: 25px;
   }
+  
  
   
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-tag name="stats" color="yellow"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
@@ -1347,7 +1356,7 @@ All available items:
 
 &lt;div class=&quot;footer-item&quot; title=&quot;This is you!&quot;&gt;
 
-&lt;img style=&quot;max-width: 90px;&quot; src=&quot;assets/monkey-monster.png&quot;/&gt;
+&lt;img class=&quot;profile-pic&quot; src=&quot;assets/monkey-monster.png&quot;/&gt;
 
 &lt;/div&gt;
 
