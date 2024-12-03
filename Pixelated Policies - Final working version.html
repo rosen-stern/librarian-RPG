@@ -882,16 +882,19 @@ _________
 Stardew Valley for Libraries
 
 As Phil Salvador explains: &quot;For [Will] Wright, [lead game designer on many games at Maxis, including the original SimCity], games were a way of helping people create “mental models” for understanding parts of the world. The team at Maxis would research a topic like urban dynamics* – or something like ant colony behavior, in the case of another game they made called SimAnt – and create a game where players could experiment with those ideas. The goal wasn’t to teach anything directly, but rather to help the player get the model of SimCity in their head, so that playing this game could help them understand how the different systems within a city interact. For many people though, that nuance was lost, and instead they treated it like Maxis could build accurate simulations of the real world.&quot;</tw-passagedata><tw-passagedata pid="8" name="Note for Images" tags="" position="75,225" size="100,100">&lt;!-- &quot;&lt;img src=\&quot;\&quot;&gt;&quot; --&gt;</tw-passagedata><tw-passagedata pid="9" name="Choose Your Starting Collection" tags="no-footer" position="600,350" size="100,100">{
+
+
 (set: $unlockedCollections to (altered: via its name, ...(find: _coll where _coll&#39;s unlocked is true, ...$collections)))
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;h1&gt;Pixelated Policies&lt;/h1&gt;
 &lt;h4&gt;A game about librarians, by library science students&lt;/h4&gt;
+&lt;p&gt;(if: $ppassageNameVisted is 0)[(set: $ppassageNameVisted to 1)](else:)[Your current score is: $wins successful years, $losses unsuccessful years.]&lt;/p&gt;
 You&#39;re a digital librarian with a grant to work on a new digital collection for your library. What kind of media would you like to focus on to start your collection?
 &lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
 
-(if: $wins + $losses &gt; 0)[Choose your difficulty: (dropdown: bind $difficulty, &quot;Easy&quot;, &quot;Medium&quot;, &quot;Hard&quot;, &quot;Easily Hard&quot;, &quot;Hardly Easy&quot;)]
+(if: $wins + $losses &gt; 0)[Difficulty: (dropdown: bind $difficulty, &quot;Easy&quot;, &quot;Medium&quot;, &quot;Hard&quot;, &quot;Easily Hard&quot;, &quot;Hardly Easy&quot;)]
 
 (for: each _collectionType, ...$unlockedCollections)[
     &lt;div class=&quot;choice-item&quot;&gt;
@@ -923,7 +926,7 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 
 &lt;p&gt;Your new $LastCollectionChoice collection will be a great asset to your library, but you&#39;ll have to make some difficult decisions to develop it to its full potential.&lt;/p&gt;
 
-&lt;p&gt;In just a few months, the &lt;b&gt;Library Director&lt;/b&gt; will be in town to determine if the collection has met their standards. If &lt;u&gt;the collection is large enough&lt;/u&gt; and if &lt;u&gt;the community supports it&lt;/u&gt;, you&#39;ll be funded again next year. You can see your statistics at any time by selecting Collection or Community at the bottom of any page.&lt;/p&gt;
+&lt;p&gt;In just a few months, the &lt;b&gt;Library Director&lt;/b&gt; will be in town to determine if the collection has met their standards and whether you&#39;ll be funded again next year. You can see your statistics at any time by selecting the Stats at the bottom of any page.&lt;/p&gt;
 
 &lt;p&gt;Because you have chosen to begin a $LastCollectionChoice collection, the &lt;b&gt;Library Director&lt;/b&gt; will be expecting you to &lt;b&gt;(print:(find: _col where _col&#39;s name is $LastCollectionChoice, ...$collections)&#39;s 1st&#39;s goal).&lt;/b&gt; They will be checking on your stats to make sure you are maintaining yourself properly during this test.
 &lt;br&gt;
@@ -1389,11 +1392,12 @@ All available items:
 ]
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
+&lt;h3&gt;The Library Director enters...&lt;/h3&gt;
 (if: $winner)[
-	YOU WIN! Congratulations
+They take a walk around the library, admiring your work. &quot;You&#39;ve really changed this place for the better,&quot; they say. &quot;Want to continue your work in the new fiscal year?&quot;
     (set: $wins to it + 1)
 ](else:)[
-	YOU LOSE! Oh no!
+They take one look around and sigh. &quot;(if: $playerCollection&#39;s type is &quot;streaming&quot;)[The community doesn&#39;t seem happy enough...](if: $playerCollection&#39;s type is &quot;VR&quot;)[You seem so wiped out and tired...](if: $playerCollection&#39;s type is &quot;videogames&quot;)[There really aren&#39;t enough games in here...] Do you want to try again in the new fiscal year?&quot;
     (set: $losses to it + 1)
 ]
 }
@@ -1405,26 +1409,24 @@ You went for $level rounds before The Director came.&lt;br&gt;
 This is your (str-nth: $wins + $losses) time through the game.&lt;br&gt;
 You&#39;ve seen (for: each _bib, ...$bib)[(if: _bib&#39;s unlocked is true)[(set: $currentUnlockedCount to it + 1)](else-if: _bib&#39;s unlocked is false)[(set: $currentLockedCount to it + 1)]]$currentUnlockedCount bibliography sources out of a total (print:$currentLockedCount+$currentUnlockedCount) sources. Only $currentLockedCount more to go!
 {
+
+&lt;/div&gt;
+
 &lt;div class=&quot;choice&quot;&gt;
+
 &lt;div class=&quot;choice-item&quot;&gt;
-[[Game Over]] 
-&lt;/div&gt;
-&lt;/div&gt;
+[[Yes, try again -&gt;Game Over]] 
 &lt;/div&gt;
 
-
-&lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">{&lt;div class=&quot;body&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-Your current score is: $wins wins &amp; $losses losses 
-&lt;br&gt;
-Play again? 
-
-&lt;/div&gt;
-&lt;div class=&quot;choice&quot;&gt;
 &lt;div class=&quot;choice-item&quot;&gt;
-[[Choose Your Starting Collection]] 
-&lt;/div&gt;}
+[[No, thanks]]
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;/div&gt;
+}</tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">(live: 0s)[(go-to: &quot;Choose Your Starting Collection&quot;)]
 
 &lt;!--Reset all global variables except All Unlocks--&gt;
 {(set: $NumberOfChoices to 2)&lt;!--Choices revealed to player each round--&gt;
@@ -1438,9 +1440,7 @@ Play again?
 (set: $level to 0)&lt;!--Current Rounds or Level--&gt;
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 &lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-}</tw-passagedata><tw-passagedata pid="22" name="[OLD] Current Stats" tags="" position="50,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
+</tw-passagedata><tw-passagedata pid="22" name="[OLD] Current Stats" tags="" position="50,875" size="100,100">{(print: $chosenEvent&#39;s choicesEffects&#39;s $chosenEventsEffect)
 (set: $collectionAmount to it + (random: $collectionAmountMIN,$collectionAmountMAX))
 (if:$communityMeter is &gt; 1)[(set: $communityMeter to 1)]
 }
@@ -1716,7 +1716,21 @@ Click to lock in your choice:
 (click-rerun: &#39;&lt;img src=&quot;assets/tragedy.png&quot;&gt;&#39;)[(set: $character to &#39;tragedy&#39;)]
 
 &lt;img src=&quot;assets/sculpture.png&quot;&gt;
-(click-rerun: &#39;&lt;img src=&quot;assets/sculpture.png&quot;&gt;&#39;)[(set: $character to &#39;sculpture&#39;)]</tw-passagedata></tw-storydata>
+(click-rerun: &#39;&lt;img src=&quot;assets/sculpture.png&quot;&gt;&#39;)[(set: $character to &#39;sculpture&#39;)]</tw-passagedata><tw-passagedata pid="29" name="No, thanks" tags="" position="725,1000" size="100,100">{
+&lt;div class=&quot;body&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;h3&gt;You had a good run!&lt;/h3&gt;
+
+&lt;p&gt;Thanks so much for playing our game. We hope you enjoyed trying to manage a digital collection. Every time you play, there are more events, items, and bibliography entries to unlock.&lt;/p&gt;
+
+&lt;p&gt;Feel free to send this link to your friends and local librarians. We hope this is a way for people to better understand the complexities and challenges of digital collections.&lt;/p&gt;
+
+&lt;p&gt;Developers: Solon Scott (code), Nina Navazio (interface)&lt;/p&gt;
+&lt;p&gt;Content and support: Cecelia Barnett, Hailee Tomassone, Saskia Lane&lt;/p&gt;
+&lt;p&gt;Researchers: everyone :) &lt;/p&gt;
+&lt;div&gt;
+&lt;/div&gt;
+}</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
