@@ -603,7 +603,7 @@ _________
             &quot;eventText2&quot;,&quot;Do you take the time to retrofit the headset with open-source software? Or do you eat the loss and move on to newer hardware?&quot;,
         	&quot;type&quot;,&quot;VR&quot;,
             &quot;difficulty&quot;,&quot;heavy&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it / 2)(set: $communityMeter to it + .05)(set: $collectionAmountMIN to it + 1)(set: $collectionAmountMAX to it + 2)&quot;, &quot;(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it / 2)(set: $communityMeter to it * 1.1)(set: $collectionAmountMIN to it + 1)(set: $collectionAmountMAX to it + 2)&quot;, &quot;(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)&quot;),
             &quot;choicesText&quot;,(a:&quot;Fix it&quot;, &quot;Chuck it&quot;),
             &quot;citation&quot;,1,
             &quot;unlocked&quot;,true
@@ -680,7 +680,7 @@ _________
             &quot;eventText2&quot;,&quot;This patron might be the only person in the whole system who uses the streaming service, as you aren&#39;t certain how popular the show is. But at the same time, this patron is a frequent volunteer, donor, visitor, and adds a whimsical British flair.&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionEnergy to it - 2)](else:)[(set: $collectionStatus to it + (a:&#39;Expensive&#39;))](set: $communityMeter to it + .05)(set: $collectionAmount to it + 5)&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionEnergy to it + 1)&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionEnergy to it - 2)](else:)[(set: $collectionStatus to it + (a:&#39;Expensive&#39;))](set: $communityMeter to it * 1.05)(set: $collectionAmount to it + 5)&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionEnergy to it + 1)&quot;),
             &quot;choicesText&quot;,(a:&quot;Subscribe to the service&quot;, &quot;Mention services you already have&quot;),
             &quot;citation&quot;,10,
             &quot;unlocked&quot;,true
@@ -691,7 +691,7 @@ _________
             &quot;eventText2&quot;,&quot;A few of the students know each other, but several don&#39;t. They don&#39;t all seem to be getting to know each other, but they share the consoles fair enough. In what way would you like to intervene?&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
             &quot;difficulty&quot;,&quot;light&quot;,
-            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it + .1)(set: $collectionAmountMAX to it + 2)(set: $collectionStatus to it + (a:&#39;Teen Spirit&#39;))&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it - 5)&quot;),
+            &quot;choicesEffects&quot;,(a:&quot;(set: $collectionEnergy to it - 1)(set: $communityMeter to it * 1.1)(set: $collectionAmountMAX to it + 2)(set: $collectionStatus to it + (a:&#39;Teen Spirit&#39;))&quot;, &quot;(set: $communityMeter to it - .05)(set: $collectionAmount to it - 5)&quot;),
             &quot;choicesText&quot;,(a:&quot;Start a video game club&quot;, &quot;Leave them to their own devices&quot;),
             &quot;citation&quot;,4,
             &quot;unlocked&quot;,true
@@ -846,7 +846,7 @@ _________
         &quot;amount&quot;,1,
         &quot;token&quot;,&quot;V&quot;,
         &quot;status&quot;,(a:&quot;Young&quot;, &quot;Cutting Edge&quot;,&quot;Technical&quot;),
-        &quot;goal&quot;,&quot;not allow your Energy Meter to reach Zero&quot;,
+        &quot;goal&quot;,&quot;end with more Energy than you started with&quot;,
         &quot;unlocked&quot;,true
         ),
         (dm:&quot;type&quot;,&quot;videogames&quot;,
@@ -891,6 +891,8 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 &lt;/div&gt;
 &lt;div class=&quot;choice&quot;&gt;
 
+(if: $wins + $losses &gt; 0)[Choose your difficulty: (dropdown: bind $difficulty, &quot;Easy&quot;, &quot;Medium&quot;, &quot;Hard&quot;, &quot;Easily Hard&quot;, &quot;Hardly Easy&quot;)]
+
 (for: each _collectionType, ...$unlockedCollections)[
     &lt;div class=&quot;choice-item&quot;&gt;
 (link: _collectionType)[
@@ -910,6 +912,12 @@ You&#39;re a digital librarian with a grant to work on a new digital collection 
 (set: $eventsUsed to (a:))
 (set: $resetItemsPassage to true)
 (set: $resetEventsPassage to true)
+(if: $difficulty is &quot;None&quot;)[(set: $roundLengths to 10)(set: $difficultyMultiplier to .9)]
+(if: $difficulty is &quot;Easy&quot;)[(set: $roundLengths to 7)(set: $difficultyMultiplier to .75)]
+(if: $difficulty is &quot;Medium&quot;)[(set: $roundLengths to 10)(set: $difficultyMultiplier to 1.1)]
+(if: $difficulty is &quot;Hard&quot;)[(set: $roundLengths to 13)(set: $difficultyMultiplier to 1.3)]
+(if: $difficulty is &quot;Easily Hard&quot;)[(set: $roundLengths to 7)(set: $difficultyMultiplier to 1.5)]
+(if: $difficulty is &quot;Hardly Easy&quot;)[(set: $roundLengths to 16)(set: $difficultyMultiplier to 2)]
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 
@@ -938,7 +946,7 @@ You have  (display:&quot;timeDance&quot;) left to go...
 	(a:
         (dm:&quot;name&quot;,&quot;Technology Grant For More Items&quot;,
             &quot;description&quot;,&quot;More items every turn!&quot;,
-            &quot;effect&quot;,&quot;(set: $NumberOfChoices to 3)(set: $playerItems&#39;s last&#39;s effect to &#39;none&#39;)&quot;,
+            &quot;effect&quot;,&quot;(set: $NumberOfChoices to 3)(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
             &quot;citation&quot;,2,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
@@ -1036,7 +1044,7 @@ You have  (display:&quot;timeDance&quot;) left to go...
 		(dm:&quot;name&quot;,&quot;Patron-Driven Acquisitions Trial&quot;,
     		&quot;description&quot;,&quot;A patron adds this item to the library by request, and you can&#39;t get rid of it anymore... Oh well, it was worth it!&quot;,
             &quot;effect&quot;,&quot;(set: $collectionStatus to it + (a:&#39;PDA&#39;))
-            	(set: $playerItems&#39;s last&#39;s effect to &#39;none&#39;)&quot;,
+            	(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
             &quot;citation&quot;,17,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
@@ -1242,11 +1250,13 @@ All available items:
 (set: $collectionAmountMAX to 0)&lt;!--maximum games gained per turn--&gt;
 
 (set: $collectionStatus to (a:))&lt;!--Collection&#39;s current statuses--&gt;
-(set: $collectionCount to 1)&lt;!--Number ofdifferent collections held--&gt;
+(set: $collectionCount to 1)&lt;!--Number of different collections held--&gt;
 (set: $level to 0)&lt;!--Current Rounds or Level--&gt;
 (set: $trend to (a:0,0,0,0,0))&lt;!--Current library collections that are trending. --&gt;
 	&lt;!--(a:&quot;Streaming&quot;, &quot;VR&quot;, &quot;Videogames&quot;,&quot;Audio Streaming&quot;,&quot;Digital Magazines&quot;)--&gt;
-
+(set: $wins to 0)
+(set: $losses to 0)
+(set: $difficulty to &quot;None&quot;)
 }</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="1100,350" size="100,100">{
 (set: _temp to (round:$communityMeter*100))
 (link:&#39;&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
@@ -1277,7 +1287,7 @@ All available items:
 &lt;div class=&quot;footer-item&quot; title=&quot;The amount of physical copies of video games in your collection.&quot;&gt;
 &lt;div&gt;Games&lt;/div&gt;
 &lt;div class=&quot;footer-item-stats&quot;&gt; 
-&lt;div&gt;$collectionCount&lt;/div&gt;
+&lt;div&gt;$collectionAmount&lt;/div&gt;
 &lt;img src=&quot;assets/cd.png&quot;/&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1325,7 +1335,7 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
-(set: $collectionAmount to it + (random:$collectionAmountMIN,$collectionAmountMAX))
+(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
 }</tw-passagedata><tw-passagedata pid="19" name="Final Event" tags="" position="750,725" size="100,100">{(if: $resetEventsPassage)[
 (set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
 (set: $biblink to $chosenEvent&#39;s citation)
@@ -1366,23 +1376,48 @@ All available items:
     	(print: _i&#39;s effect)
     ]
 ]
-(set: $collectionAmount to it + (random:$collectionAmountMIN,$collectionAmountMAX))
-}</tw-passagedata><tw-passagedata pid="20" name="Resolution" tags="" position="725,875" size="100,100">{
+(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
+}</tw-passagedata><tw-passagedata pid="20" name="Resolution" tags="" position="725,875" size="100,100">{(set: $winner to false)
+(set: $currentUnlockedCount to 0)
+(set: $currentLockedCount to 0)
+(if: $communityMeter &gt; .9*$difficultyMultiplier and $playerCollection&#39;s type is &quot;streaming&quot;)[
+	(set: $winner to true)
+](if: $collectionEnergy &gt; (trunc: 5*$difficultyMultiplier) and $playerCollection&#39;s type is &quot;VR&quot;)[
+	(set: $winner to true)
+](if: $collectionAmount &gt; 50*$difficultyMultiplier and $playerCollection&#39;s type is &quot;videogames&quot;)[
+	(set: $winner to true)
+]
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-
-You win! Or lose lol
-I haven&#39;t been keeping track (yet)
-&lt;/div&gt;
-
-&lt;/div class=&quot;choice&quot;&gt;
+(if: $winner)[
+	YOU WIN! Congratulations
+    (set: $wins to it + 1)
+](else:)[
+	YOU LOSE! Oh no!
+    (set: $losses to it + 1)
+]
+}
+&lt;br&gt;
+Final Statistics:&lt;br&gt;
+(if:$wins+$losses is &gt; 1)[Your difficulty for this run was set to: &#39;&#39;$difficulty&#39;&#39;](else:)[&#39;&#39;You&#39;ve unlocked difficulty selections!&#39;&#39;]&lt;br&gt;
+Your collection began with &#39;&#39;(print: $playerCollection&#39;s name)&#39;&#39; and from there you developed $collectionCount different collections.&lt;br&gt;
+You went for $level rounds before The Director came.&lt;br&gt;
+This is your (str-nth: $wins + $losses) time through the game.&lt;br&gt;
+You&#39;ve seen (for: each _bib, ...$bib)[(if: _bib&#39;s unlocked is true)[(set: $currentUnlockedCount to it + 1)](else-if: _bib&#39;s unlocked is false)[(set: $currentLockedCount to it + 1)]]$currentUnlockedCount bibliography sources out of a total (print:$currentLockedCount+$currentUnlockedCount) sources. Only $currentLockedCount more to go!
+{
+&lt;div class=&quot;choice&quot;&gt;
+&lt;div class=&quot;choice-item&quot;&gt;
 [[Game Over]] 
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 
 
 &lt;/div&gt;
 }</tw-passagedata><tw-passagedata pid="21" name="Game Over" tags="" position="975,875" size="100,100">{&lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
+Your current score is: $wins wins &amp; $losses losses 
+&lt;br&gt;
 Play again? 
 
 &lt;/div&gt;
@@ -1553,7 +1588,7 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
 }</tw-passagedata><tw-passagedata pid="26" name="Update item code" tags="" position="650,600" size="100,100">{
 (if: $level % 3 is 0)[
 	(set: $nextEvent to &quot;Heavy Event&quot;)
-](else-if: $level % 7 is 0)[
+](else-if: $level % $roundLengths is 0)[
 	(set: $nextEvent to &quot;Final Event&quot;)
 ](else:)[
 	(set: $nextEvent to &quot;Light Event&quot;)
@@ -1660,7 +1695,28 @@ Click to lock in your choice:
 	(link-repeat: $unlockedCollections&#39;s 1st)[]
 ]
 ]]
---&gt;</tw-passagedata></tw-storydata>
+--&gt;</tw-passagedata><tw-passagedata pid="28" name="Character Choice" tags="" position="700,200" size="100,100">Choose your character:
+
+|image&gt;[&lt;img src=&quot;assets/monkey-monster.png&quot;&gt;]
+
+(link-rerun:&quot;monkey&quot;)[
+	(replace:?image)[&lt;img src=&quot;assets/monkey-monster.png&quot;&gt;(after: 1s)[(rerun:?image)(set: $character to &#39;monkey-monster&#39;)]]
+]
+(link-rerun:&quot;sculpture&quot;)[
+	(replace:?image)[&lt;img src=&quot;assets/sculpture.png&quot;&gt;(after: 1s)[(rerun:?image)(set: $character to &#39;sculpture&#39;)]]
+]
+(link-rerun:&quot;tragedy&quot;)[
+	(replace:?image)[&lt;img src=&quot;assets/tragedy.png&quot;&gt;(after: 1s)[(rerun:?image)(set: $character to &#39;tragedy&#39;)]]
+]
+
+&lt;img src=&quot;assets/monkey-monster.png&quot;&gt;
+(click-rerun: &#39;&lt;img src=&quot;assets/monkey-monster.png&quot;&gt;&#39;)[(set: $character to &#39;monkey-monster&#39;)]
+
+&lt;img src=&quot;assets/tragedy.png&quot;&gt;
+(click-rerun: &#39;&lt;img src=&quot;assets/tragedy.png&quot;&gt;&#39;)[(set: $character to &#39;tragedy&#39;)]
+
+&lt;img src=&quot;assets/sculpture.png&quot;&gt;
+(click-rerun: &#39;&lt;img src=&quot;assets/sculpture.png&quot;&gt;&#39;)[(set: $character to &#39;sculpture&#39;)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
