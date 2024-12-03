@@ -26,6 +26,7 @@
 
 html {
 width: 100%;
+  font-size: 1vw;
 }
 
 tw-story {
@@ -68,6 +69,18 @@ h2{
   align-items: center;
   gap: 10px;
 }
+
+h1{
+font-size: 4vw;
+}
+h2{
+  font-size: 3.5vw;
+
+}
+h3{
+  font-size: 3vw;
+}
+
 
 /*
 CHOICES
@@ -220,7 +233,7 @@ QUOTES
 background-color: white;
   color: black;
   width: 400px;
-  font-size: 1em;
+  font-size: 1vw;
   font-weight: normal;
   line-height: auto;
   padding: 10px;
@@ -229,6 +242,43 @@ background-color: white;
 .bib-item-wrapper {
  padding: 20px;
 border: 1px solid black;
+}
+
+
+/* MOBILE FRIENDLY */
+
+@media (width <= 1250px) {
+
+  .body {
+    display: block;    
+  }
+  
+  .content, .choice {
+  width: 80%;
+  }
+  
+  .choice{
+    & .choice-item{
+    margin: 10px;
+    }
+  }
+  
+  .footer-body{
+    position: static;
+      right: auto;
+  bottom: auto;
+  display: inline-block;
+     text-align: left;
+    margin: 0px;
+    margin-left: 30px;
+  }
+  
+  .footer-content{
+  gap: 25px;
+  }
+  
+ 
+  
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="startup" color="purple"></tw-tag><tw-tag name="header" color="orange"></tw-tag><tw-tag name="stats" color="yellow"></tw-tag><tw-passagedata pid="1" name="Bibliography" tags="startup" position="300,100" size="100,100">{(set: $bib to 
 	(a:
     	(dm:
