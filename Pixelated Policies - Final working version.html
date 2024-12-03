@@ -1373,6 +1373,12 @@ EXAMPLE:
 (set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;light&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 (set: $biblink to $chosenEvent&#39;s citation)
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
 ]
 (set: $resetItemsPassage to true)(set: $resetEventsPassage to false)
 &lt;div class=&quot;body&quot;&gt;
@@ -1406,12 +1412,6 @@ EXAMPLE:
 &lt;/div&gt;
 
 &lt;/div&gt;
-(for: each _i, ...$playerItems)[
-	(if: _i contains &quot;effect&quot;)[
-    	(print: _i&#39;s effect)
-    ]
-]
-(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
 }
 
 
@@ -1491,6 +1491,12 @@ All available items:
 (set: $chosenEvent to (find: _event where _event&#39;s unlocked is true and _event&#39;s difficulty is &quot;heavy&quot; and _event&#39;s type is not in $unlockedCollections and _event&#39;s title is not in $eventsUsed, ...$events)&#39;s random)
 (set: $eventsUsed to it + (a:$chosenEvent&#39;s title))
 (set: $biblink to $chosenEvent&#39;s citation)
+(for: each _i, ...$playerItems)[
+	(if: _i contains &quot;effect&quot;)[
+    	(print: _i&#39;s effect)
+    ]
+]
+(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
 ]
 (set: $resetItemsPassage to true)(set: $resetEventsPassage to false)
 &lt;div class=&quot;body&quot;&gt;
@@ -1524,15 +1530,15 @@ All available items:
 &lt;/div&gt;
 
 &lt;/div&gt;
+}</tw-passagedata><tw-passagedata pid="19" name="Final Event" tags="" position="750,725" size="100,100">{(if: $resetEventsPassage)[
+(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
+(set: $biblink to $chosenEvent&#39;s citation)
 (for: each _i, ...$playerItems)[
 	(if: _i contains &quot;effect&quot;)[
     	(print: _i&#39;s effect)
     ]
 ]
 (set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
-}</tw-passagedata><tw-passagedata pid="19" name="Final Event" tags="" position="750,725" size="100,100">{(if: $resetEventsPassage)[
-(set: $chosenEvent to (find: _event where _event&#39;s type is $playerCollection&#39;s type and _event&#39;s difficulty is &quot;final&quot;, ...$events)&#39;s random)
-(set: $biblink to $chosenEvent&#39;s citation)
 ]
 (set: $resetItemsPassage to true)(set: $resetEventsPassage to false)
 &lt;div class=&quot;body&quot;&gt;
@@ -1565,12 +1571,6 @@ All available items:
 &lt;/div&gt;
 
 &lt;/div&gt;
-(for: each _i, ...$playerItems)[
-	(if: _i contains &quot;effect&quot;)[
-    	(print: _i&#39;s effect)
-    ]
-]
-(set: $collectionAmount to it + (random:(round:$collectionAmountMIN),(round:$collectionAmountMAX)))
 }</tw-passagedata><tw-passagedata pid="20" name="Resolution" tags="" position="725,875" size="100,100">{(set: $winner to false)
 (set: $currentUnlockedCount to 0)
 (set: $currentLockedCount to 0)
