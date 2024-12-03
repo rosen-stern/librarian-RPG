@@ -240,7 +240,6 @@ QUOTES
   margin-left: 10px;
 background-color: white;
   color: black;
-  width: 400px;
   font-size: 1vw;
   font-weight: normal;
   line-height: auto;
@@ -753,7 +752,7 @@ _________
             &quot;unlocked&quot;,true
 		),
         (dm:
-        	&quot;title&quot;,&quot;-TEMP-Streaming Service Ignites Controversy&quot;,
+        	&quot;title&quot;,&quot;Streaming Service Ignites Controversy&quot;,
         	&quot;eventText1&quot;, &quot;Some community members have served you a warning about the content that they are seeing on your current subscription services. It seems a portion of the services focus on 16-wheel trucks and that this group is morally opposed against it. They are threatening to withdraw their patronage.&quot;,
             &quot;eventText2&quot;,&quot;Do you rebuild bridges and attempt to demystify this community&#39;s bias? Or do you send these complaints up the chain to the streaming service?&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
@@ -764,7 +763,7 @@ _________
             &quot;unlocked&quot;,true
 		),
         (dm:
-        	&quot;title&quot;,&quot;-TEMP-New Streampass+ Upgrade Has A Little Caveat&quot;,
+        	&quot;title&quot;,&quot;New Streampass+ Upgrade Has A Little Caveat&quot;,
         	&quot;eventText1&quot;, &quot;One of your collections has upgraded and is asking for you to track new usage stats from your patrons.&quot;,
             &quot;eventText2&quot;,&quot;What&#39;s the first way that you decide to inform your patrons of these changes?&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
@@ -940,7 +939,7 @@ _________
             &quot;unlocked&quot;,true
 		),
         (dm:
-        	&quot;title&quot;,&quot;Party&#39;s Over Dude&quot;,
+        	&quot;title&quot;,&quot;[FINALE:] Bursting Your Bubble&quot;,
         	&quot;eventText1&quot;, &quot;VR has fallen in popularity, and less patrons are interested in the collection.&quot;,
             &quot;eventText2&quot;,&quot;Can you prove that VR is still worth hosting the collection in the library?&quot;,
         	&quot;type&quot;,&quot;VR&quot;,
@@ -951,7 +950,7 @@ _________
             &quot;unlocked&quot;,true
 		),
         (dm:
-        	&quot;title&quot;,&quot;Hulflix Plus Video Re-negs Contract&quot;,
+        	&quot;title&quot;,&quot;[FINALE:] Hulflix Plus Video Re-negs Contract&quot;,
         	&quot;eventText1&quot;, &quot;The primary streaming service has increased their prices across the board and patrons are clamoring for the library to get better stream options.&quot;,
             &quot;eventText2&quot;,&quot;Do you push for a stronger contract? Or do you bring together your state&#39;s libraries to collaboratively negotiate a new contract?&quot;,
         	&quot;type&quot;,&quot;streaming&quot;,
@@ -962,7 +961,7 @@ _________
             &quot;unlocked&quot;,true
 		),
         (dm:
-        	&quot;title&quot;,&quot;Headhunters&quot;,
+        	&quot;title&quot;,&quot;[FINALE:] Headhunters&quot;,
         	&quot;eventText1&quot;, &quot;The Game Company has found you and offered you a cushy industry job&quot;,
             &quot;eventText2&quot;,&quot;They are definitely making sure you can&#39;t keep librarian-ing! But that pay tho&quot;,
         	&quot;type&quot;,&quot;videogames&quot;,
@@ -1121,7 +1120,7 @@ You have _timeLeft months until the Library Director |ellipsis&gt;[arrives]
 		),
         (dm:&quot;name&quot;,&quot;Media Motor Machine&quot;,
             &quot;description&quot;,&quot;A vehicle the library can use to bring games to community events outside the library.&quot;,
-            &quot;effect&quot;,&quot;(set: $collectionEnergy to it + 3)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $communityMeter to it * 1.03)(set: $collectionAmountMAX * 1.4)&#39;)&quot;,
+            &quot;effect&quot;,&quot;(set: $collectionEnergy to it + 3)(set: $playerItems&#39;s last&#39;s effect to &#39;(set: $communityMeter to it * 1.03)(set: $collectionAmountMAX to it * 1.4)&#39;)&quot;,
             &quot;citation&quot;,19,
             &quot;pool&quot;,&quot;general&quot;,
             &quot;unlocked&quot;,true,
@@ -1219,7 +1218,7 @@ You have _timeLeft months until the Library Director |ellipsis&gt;[arrives]
 		),
 		(dm:&quot;name&quot;,&quot;Streampass&quot;,
     		&quot;description&quot;,&quot;Expands your streaming collection for a brief time, but it&#39;s very expensive.&quot;,
-            &quot;effect&quot;,&quot;(set: $collectionAmount to it + 45)(set: $communityMeter to it + .15)(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $playerItems to it - (a:$items&#39;s 15th)]&quot;,
+            &quot;effect&quot;,&quot;(set: $collectionAmount to it + 45)(set: $communityMeter to it + .15)(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)]&quot;,
             &quot;citation&quot;,19,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
@@ -1243,7 +1242,7 @@ You have _timeLeft months until the Library Director |ellipsis&gt;[arrives]
 		),
 		(dm:&quot;name&quot;,&quot;Alexandra Road License&quot;,
     		&quot;description&quot;,&quot;The library system has decided to invest in a subscription license to the academic video streaming database Alexandra Road. The license restricts how many user can access the database simultaneously and requires quarterly renewals.&quot;,
-            &quot;effect&quot;,&quot;(if: $level % 3 is 0)[(set: $communityMeter to it + .15)]&quot;,
+            &quot;effect&quot;,&quot;(if: ($level % 3) is 0)[(set: $communityMeter to it + .15)]&quot;,
             &quot;citation&quot;,22,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
@@ -1251,7 +1250,7 @@ You have _timeLeft months until the Library Director |ellipsis&gt;[arrives]
 		),
 		(dm:&quot;name&quot;,&quot;Liber+&quot;,
     		&quot;description&quot;,&quot;A new video streaming provider has come onto the scene offering a unique subscription model with unlimited, simultaneous streaming. However, to convince the Director to invest, you&#39;ll have to cut budget for your other streaming options.&quot;,
-            &quot;effect&quot;,&quot;(set: $collectionStatus to it - &#39;Expensive&#39;)(if: $collectionStatus does not contain &#39;PDA&#39;)[(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)](set: $communityMeter to it + .2)(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
+            &quot;effect&quot;,&quot;(if: $collectionStatus contains &#39;Expensive&#39;)[(set: $collectionStatus to it - (a:&#39;Expensive&#39;))](if: $collectionStatus does not contain &#39;PDA&#39;)[(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)(move: (either: ...$playerItems) into  _bin)](set: $communityMeter to it + .2)(set: $playerItems&#39;s last&#39;s effect to &#39;&#39;)&quot;,
             &quot;citation&quot;,23,
             &quot;pool&quot;,&quot;streaming&quot;,
             &quot;unlocked&quot;,true,
@@ -1326,11 +1325,11 @@ EXAMPLE:
 	(set: $itemOptions to (a:))
 	(set: $level to it + 1)
 	(set: $choice to 0)
-    (if: $collectionEnergy is &lt; 0)[(set: $collectionEnergy to 0)]
-    (if: $communityMeter is &gt; 1)[(set: $communityMeter to 1)]
-(for: each _i, ...(range:1,$NumberOfChoices))[
- 	(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
-  ]
+	(for: each _i, ...(range:1,$NumberOfChoices))[
+ 		(if: $playerAvailableItems is not an empty)[
+    		(move: $playerAvailableItems&#39;s random into $itemOptions&#39;s _i)
+		]
+	]
 ](set: $resetItemsPassage to false)(set: $resetEventsPassage to true)
 (set: _timeLeft to ($roundLengths - $level)+1)
 
@@ -1357,7 +1356,7 @@ EXAMPLE:
     (for: each _collectionType, ...$unlockedCollections)[
     &lt;div class=&quot;choice-item&quot;&gt;
 (link: _collectionType)[
-(set: $choice to &quot;New collection&quot;)
+	(set: $choice to &quot;New collection&quot;)
 	(set: $LastCollectionChoice to _collectionType)
 	(go-to: &quot;Update item code&quot;)
 ]
@@ -1452,6 +1451,9 @@ All available items:
 (set: $losses to 0)
 (set: $difficulty to &quot;None&quot;)
 }</tw-passagedata><tw-passagedata pid="17" name="yesfooter" tags="" position="1100,350" size="100,100">{
+(if: $collectionEnergy is &lt; 0)[(set: $collectionEnergy to 0)]
+(if: $communityMeter is &gt; 1)[(set: $communityMeter to 1)]
+(set: $collectionAmount to (round: $collectionAmount))
 (set: _temp to (round:$communityMeter*100))
 (link:&#39;&lt;div class=&quot;footer-header&quot;&gt;Stats&lt;/div&gt;
 &lt;div class=&quot;footer-content&quot;&gt;
@@ -1610,7 +1612,7 @@ You&#39;ve seen (for: each _bib, ...$bib)[(if: _bib&#39;s unlocked is true)[(set
 &lt;/div&gt;
 
 &lt;div class=&quot;choice-item&quot;&gt;
-[[No, thanks]]
+[[Credits]]
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1800,9 +1802,9 @@ Each turn you will gain between $collectionAmountMIN and $collectionAmountMAX ga
         
         
 	](else:)[
-    	(set: $unlockedCollections to it - (a:$LastCollectionChoice))
+        (set: $unlockedCollections to it - (a:$LastCollectionChoice))
     	(set: $playerAvailableItems to it+(find: _itemPool where _itemPool&#39;s unlocked is
-        true and _itemPool&#39;s pool is 1st of (find: _type where _type&#39;s name is $LastCollectionChoice ...$collections)&#39;s type, ...$items))
+        true and _itemPool&#39;s pool is (find: _col where  _col&#39;s name is $LastCollectionChoice, ...$collections)&#39;s 1st&#39;s type, ...$items))
         (set: $playerAvailableItems to it + $itemOptions)
         (set: $collectionCount to it + 1)
     ]
@@ -1911,7 +1913,7 @@ Click to lock in your choice:
 (click-rerun: &#39;&lt;img src=&quot;assets/tragedy.png&quot;&gt;&#39;)[(set: $character to &#39;tragedy&#39;)]
 
 &lt;img src=&quot;assets/sculpture.png&quot;&gt;
-(click-rerun: &#39;&lt;img src=&quot;assets/sculpture.png&quot;&gt;&#39;)[(set: $character to &#39;sculpture&#39;)]</tw-passagedata><tw-passagedata pid="29" name="No, thanks" tags="" position="725,1000" size="100,100">{
+(click-rerun: &#39;&lt;img src=&quot;assets/sculpture.png&quot;&gt;&#39;)[(set: $character to &#39;sculpture&#39;)]</tw-passagedata><tw-passagedata pid="29" name="Credits" tags="" position="725,1000" size="100,100">{
 &lt;div class=&quot;body&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;h3&gt;You had a good run!&lt;/h3&gt;
@@ -1923,6 +1925,8 @@ Click to lock in your choice:
 &lt;p&gt;Developers: Solon Scott (code), Nina Navazio (interface)&lt;/p&gt;
 &lt;p&gt;Content and support: Cecelia Barnett, Hailee Tomassone, Saskia Lane&lt;/p&gt;
 &lt;p&gt;Researchers: everyone :) &lt;/p&gt;
+
+[[Let&#39;s go again! -&gt;Game Over]] 
 &lt;div&gt;
 &lt;/div&gt;
 }</tw-passagedata></tw-storydata>
